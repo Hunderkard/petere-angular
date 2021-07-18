@@ -1,0 +1,192 @@
+<lista-mesas (mesaElegida)="seleccionarMesa($event)"></lista-mesas>
+
+<div *ngIf="pedidos_arr" class="contenedor">
+    
+    <div class="lista">
+        <!-- bi NOTAS -->
+        <div class="el_de_abajo" *ngIf="pedidos_arr[0]" (click)="mover(0)">
+<!-- ag Por cada plato -->
+            <span *ngFor="let orden of pedidos_arr[0]">
+<!-- ag Si es un plato -->
+                <ng-container *ngIf="pintar(orden)[0];else mesa">
+                    {{pintar(orden)[1]}}
+            <!-- ag El doble tick -->
+                    <span class={{pintar(orden)[2]}}>
+                        <svg 
+                        xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                            <path 
+                                d="
+                                M5 6 7 9.5A.5.5 90 007.5 9.5L12.5 3.5A.5.5 90 0012 3.5L7.5 8.5 5.5 6A.5.5 90 005 6M3.5 6 5.5 9.5A.5.5 90 006 9.5L11 3.5A.5.5 90 0010.5 3.5L6 8.5 4 6A.5.5 90 003.5 6 
+                                "/>
+                        </svg>
+                    </span>
+                </ng-container>
+<!-- ag Si es la mesa -->
+                <ng-template #mesa>
+                    Mesa: {{pintar(orden)[1]}}
+                </ng-template>
+                <!--  -->
+                <br>
+            </span>
+        </div>
+        <!-- bi NOTAS -->
+        <div *ngIf="pedidos_arr[1]" (click)="mover(1)">
+<!-- ag Por cada plato -->
+            <span *ngFor="let orden of pedidos_arr[1]">
+            <!-- ag Si es un plato -->
+                <ng-container *ngIf="pintar(orden)[0];else mesa">
+                    {{pintar(orden)[1]}}
+            <!-- ag El doble tick -->
+                    <span class={{pintar(orden)[2]}}>
+                        <svg 
+                        xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                            <path 
+                                d="
+                                M5 6 7 9.5A.5.5 90 007.5 9.5L12.5 3.5A.5.5 90 0012 3.5L7.5 8.5 5.5 6A.5.5 90 005 6M3.5 6 5.5 9.5A.5.5 90 006 9.5L11 3.5A.5.5 90 0010.5 3.5L6 8.5 4 6A.5.5 90 003.5 6 
+                                "/>
+                        </svg>
+                    </span>
+                </ng-container>
+            <!-- ag Si es la mesa -->
+                <ng-template #mesa>
+                    Mesa: {{pintar(orden)[1]}}
+                </ng-template>
+                <!--  -->
+                <br>
+            </span>
+        </div>
+        <!-- bi NOTAS -->
+        <div *ngIf="pedidos_arr[2]" (click)="mover(2)">
+<!-- ag Por cada plato -->
+            <span *ngFor="let orden of pedidos_arr[2]">
+            <!-- ag Si es un plato -->
+                <ng-container *ngIf="pintar(orden)[0];else mesa">
+                    {{pintar(orden)[1]}}
+            <!-- ag El doble tick -->
+                    <span class={{pintar(orden)[2]}}>
+                        <svg 
+                        xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                            <path 
+                                d="
+                                M5 6 7 9.5A.5.5 90 007.5 9.5L12.5 3.5A.5.5 90 0012 3.5L7.5 8.5 5.5 6A.5.5 90 005 6M3.5 6 5.5 9.5A.5.5 90 006 9.5L11 3.5A.5.5 90 0010.5 3.5L6 8.5 4 6A.5.5 90 003.5 6 
+                                "/>
+                        </svg>
+                    </span>
+                </ng-container>
+            <!-- ag Si es la mesa -->
+                <ng-template #mesa>
+                    Mesa: {{pintar(orden)[1]}}
+                </ng-template>
+                <!--  -->
+                <br>
+            </span>
+        </div>
+        <!-- bi NOTAS -->
+        <div *ngIf="pedidos_arr[3]" (click)="mover(3)">
+<!-- ag Por cada plato -->
+            <span *ngFor="let orden of pedidos_arr[3]">
+            <!-- ag Si es un plato -->
+                <ng-container *ngIf="pintar(orden)[0];else mesa">
+                    {{pintar(orden)[1]}}
+            <!-- ag El doble tick -->
+                    <span class={{pintar(orden)[2]}}>
+                        <svg 
+                        xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                            <path 
+                                d="
+                                M5 6 7 9.5A.5.5 90 007.5 9.5L12.5 3.5A.5.5 90 0012 3.5L7.5 8.5 5.5 6A.5.5 90 005 6M3.5 6 5.5 9.5A.5.5 90 006 9.5L11 3.5A.5.5 90 0010.5 3.5L6 8.5 4 6A.5.5 90 003.5 6 
+                                "/>
+                        </svg>
+                    </span>
+                </ng-container>
+            <!-- ag Si es la mesa -->
+                <ng-template #mesa>
+                    Mesa: {{pintar(orden)[1]}}
+                </ng-template>
+                <!--  -->
+                <br>
+            </span>
+        </div>
+        <!-- bi NOTAS -->
+        <div *ngIf="pedidos_arr.length - 4 > 0;else normal">{{pedidos_arr.length - 3}} más</div>
+        <ng-template #normal>
+            <div *ngIf="pedidos_arr[4]" (click)="mover(4)">
+<!-- ag Por cada plato -->
+                <span *ngFor="let orden of pedidos_arr[0]">
+                <!-- ag Si es un plato -->
+                    <ng-container *ngIf="pintar(orden)[0];else mesa">
+                        {{pintar(orden)[1]}}
+                <!-- ag El doble tick -->
+                        <span class={{pintar(orden)[2]}}>
+                            <svg 
+                            xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                                <path 
+                                    d="
+                                    M5 6 7 9.5A.5.5 90 007.5 9.5L12.5 3.5A.5.5 90 0012 3.5L7.5 8.5 5.5 6A.5.5 90 005 6M3.5 6 5.5 9.5A.5.5 90 006 9.5L11 3.5A.5.5 90 0010.5 3.5L6 8.5 4 6A.5.5 90 003.5 6 
+                                    "/>
+                            </svg>
+                        </span>
+                    </ng-container>
+                <!-- ag Si es la mesa -->
+                    <ng-template #mesa>
+                        Mesa: {{pintar(orden)[1]}}
+                    </ng-template>
+                    <!--  -->
+                    <br>
+                </span>
+            </div>
+        </ng-template>
+    </div>
+
+    <table *ngIf="platos.length > 0" class="pedidos">
+        
+        <ng-container *ngFor="let orden of pedidos_arr[numeroMostrado]; let i = index">
+            <tr *ngIf="expandido(orden)[0];else desbloquear">
+                <td>{{expandido(orden)[1]}}</td> 
+                
+                <td *ngIf="orden[1];else otro" class="gris">
+                    <svg (click)="traer(pedidos_arr[numeroMostrado], expandido(orden)[1], i)"
+                    xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                        <path 
+                            d="
+                            M2.5 7L12.5 7C12.5 1 2.5 1 2.5 7ZM7 2.5195C7.4225 2.4905 7.561 2.4965 7.9985 2.5185L8 1.5L8.5 1.5A.5.5 90 006.5 1.5L7 1.5ZM6.5 7L6.5 9L8.5 9L8.5 7ZM13 9L2 9A.5.5 90 001.5 9.5L1.5 10A.5.5 90 001 10.5L1 11L14 11L14 10.5A.5.5 90 0013.5 10L13.5 9.5A.5.5 90 0013 9
+                            "
+                            />
+                    </svg>
+                </td>   
+                <ng-template #otro>
+                    <td>
+                        <svg (click)="sacar(pedidos_arr[numeroMostrado], expandido(orden)[1], i)"
+                        xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                            <path 
+                                d="
+                                M2.5 7L12.5 7C12.5 1 2.5 1 2.5 7ZM7 2.5195C7.4225 2.4905 7.561 2.4965 7.9985 2.5185L8 1.5L8.5 1.5A.5.5 90 006.5 1.5L7 1.5ZM6.5 7L6.5 9L8.5 9L8.5 7ZM13 9L2 9A.5.5 90 001.5 9.5L1.5 10A.5.5 90 001 10.5L1 11L14 11L14 10.5A.5.5 90 0013.5 10L13.5 9.5A.5.5 90 0013 9
+                                "
+                                />
+                        </svg>
+                    </td>   
+                </ng-template>
+            </tr>
+            <ng-template #desbloquear>
+                <tr>
+                    <td>Mesa: {{expandido(orden)[1]}}--</td> 
+                    <td >
+                        <!-- (click)="desbloquear_pedido(expandido(orden)[1])" -->
+                        <!-- Desbloquear -->
+                    </td>
+                    <td (click)="eliminar(pedidos_arr[numeroMostrado])">Eliminar</td>
+                </tr>
+            </ng-template>
+        </ng-container>
+        
+    </table>
+</div>
+
+<!-- <div *ngIf="pedidos_arr && pedidos_obj">
+
+    {{pedidos_obj.length}}
+    {{pedidos_arr.length}}
+    
+</div> -->
+
+<!-- <detalle-mesa [mesa]="detalleMesa"></detalle-mesa> -->

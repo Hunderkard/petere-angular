@@ -1,0 +1,35 @@
+@import "src/styles.scss";
+
+:root{ //ps Por si las moscas se lo coloco aquí también.
+    font-size: 16px; 
+    
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#cuerpo{
+
+@include movil{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 6rem;
+}
+
+@include movilPeq{
+    margin-left: 0rem;
+    margin-right: 0rem;
+    margin-top: 6rem;
+}
+
+
+@include escritorio{
+    margin-left: 6rem;
+    margin-top: 2rem;
+    margin-right: 2rem;
+    
+}
+    
+}
+

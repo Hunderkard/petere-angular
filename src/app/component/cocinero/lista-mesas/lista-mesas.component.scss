@@ -1,0 +1,12 @@
+.contenedor{    
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    .mesa svg{
+        color:var(--negro);
+        &.ocupada{
+        color:var(--coolors4);
+        }
+    }
+}

@@ -1,0 +1,22 @@
+<div class="contenedor">
+    <table *ngIf="ingredientes" class="table">
+    <thead>
+        <tr>
+        <th scope="col" class="dispensable">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col" (click)="ordenar()">Stock</th>
+        <th scope="col" class="dispensable">Unidad</th>
+        </tr>
+    </thead>
+
+    <tbody >
+        <tr *ngFor="let ingrediente of ingredientes">
+        <th scope="row" class="dispensable">{{ingrediente.id}}</th>
+        <td>{{ingrediente.nombre}}</td>
+        <td>{{ingrediente.stock}}</td>
+        <td class="dispensable">{{ingrediente.unidad_de_medida}}</td>
+        </tr>
+    </tbody>
+
+    </table>
+</div>

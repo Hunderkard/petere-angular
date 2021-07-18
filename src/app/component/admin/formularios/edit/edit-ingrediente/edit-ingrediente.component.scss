@@ -1,0 +1,101 @@
+@import "src/styles.scss";
+
+.error{
+    color: var(--coolors4);
+    background-color: var(--coolors1);
+    font-size: var(--p2);
+    text-align: center;
+}
+#inputImg{
+    display:none;
+}
+hr{
+    color: var(--coolors4);
+}
+textarea{
+    resize: none;
+    color:var(--coolors3);
+    &:focus{
+    color:var(--coolors4);
+
+    }
+}
+input{
+    color:var(--coolors3);
+    &:focus{
+    color:var(--coolors4);
+
+    }
+}
+
+.contenedor{
+    padding:var(--p2);
+    color:var(--coolors3);
+    background-color: var(--negro);
+    box-shadow: -1rem 0 3rem #000;
+    border-radius: 16px;
+    form{
+        display: grid;
+        grid: 
+        "nom nom"
+        "dat fot";
+    @include movil{
+        grid:
+        "nom"
+        "dat"
+        "fot"
+    }
+
+        .nombre{
+            grid-area: nom;
+        }
+
+        .datos{
+            grid-area: dat;
+            .stock{
+                display: flex;
+            @include movilPeq{
+                flex-direction: column;
+            }
+            }
+        }
+
+        .actualizar{
+            background-color: var(--coolors3);
+            margin: var(--p2);
+        }
+
+        .foto{
+            grid-area: fot;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img{
+                width: 200px;
+                &.pristino{
+                    border: solid;
+                    border-color: var(--coolors3);
+                }
+                &.tocado{
+                    border: solid;
+                    border-color: var(--coolors4);
+                }
+            }
+        }
+    }
+}
+
+.pristino{
+    background-color: var(--coolors1);
+    border: solid;
+    border-color: var(--coolors3);
+    border-width: var(1px);
+}
+
+.tocado{
+    background-color: var(--coolors1);
+    border: solid;
+    border-color: var(--coolors4);
+    border-width: var(1px);
+
+}

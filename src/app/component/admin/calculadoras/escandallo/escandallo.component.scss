@@ -1,0 +1,92 @@
+@import "src/styles.scss";
+
+hr{
+    border:dashed;
+    border-color:var(--coolors4);
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    box-shadow: -1rem 0 3rem #000;
+    background-color: var(--negro);
+    color:var(--coolors3);
+    padding: 1rem;
+    gap:var(--g1);
+    align-items: stretch;
+
+    .botones{
+        display: grid;
+        place-items: center;
+        grid: 
+        "agregar . . coste"
+        "calcular . . bene"
+        ". . precio .";
+        @include movil{
+            grid: 
+            "agregar . coste"
+            "calcular . bene"
+            ". . precio";   
+        }
+        @include movilPeq{
+            grid: 
+            "agregar . calcular"
+            "coste coste coste"
+            "bene bene bene"
+            "precio precio precio";   
+        }
+        
+        gap: var(--p1);
+        .agregar{
+            grid-area: agregar;
+            background-color: var(--coolors3);
+        }
+
+        .calcular{
+            grid-area: calcular;
+            color: var(--coolors4);
+            background-color: var(--coolors1);
+        }
+        .inCoste{
+            grid-area: coste;
+        }
+        .inBene{
+            grid-area: bene;
+        }
+        .outPrecio{
+            grid-area: precio;
+            input{
+                background-color: var(--coolors1);
+                text-align: center;
+                color:var(--coolors4);
+                font-weight: bold;
+            }
+        }
+    }
+
+    .ingredientes{
+        @include movilPeq{
+            transform: scale(0.85);
+        }
+    }
+
+    .ingredientes>.row{
+        @include movilPeq{
+            display: none;
+        }
+    }
+
+    
+    .costeIng{
+        background-color: var(--coolors1);
+        text-align: center;
+        color:var(--coolors4);
+        font-weight: bold;
+    }
+    
+    .borrar{
+        color: var(--coolors4);
+        background-color: var(--coolors1);
+    }
+}

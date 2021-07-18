@@ -1,0 +1,174 @@
+<div class="contenedor">
+<!-- ag FILTROS -->
+    <div class="botones">
+        <div class="filtros">
+    <!-- bi ENTRANTE -->
+            <div class="filtro">
+                <label for="inEntrante">
+                    <span class="btn verde responsive">ENTRANTES</span>
+                </label>
+                <input id="inEntrante" type="radio" name="filtros" value="ENTRANTE" [(ngModel)]="filtros">
+            </div>
+
+    <!-- bi HAMBURGUESA -->
+            <div class="filtro">
+                <label for="inHamburguesa">
+                    <span class="btn verde">HAMBURGUESAS</span>
+                </label>
+                <input id="inHamburguesa" type="radio" name="filtros" value="HAMBURGUESA" [(ngModel)]="filtros">
+            </div>
+
+    <!-- bi PASTA -->
+            <div class="filtro">
+                <label for="inPasta">
+                    <span class="btn verde">PASTAS</span>
+                </label>
+                <input id="inPasta" type="radio" name="filtros" value="PASTA" [(ngModel)]="filtros">
+            </div>
+
+    <!-- bi PIZZA -->
+            <div class="filtro">
+                <label for="inPizzas">
+                    <span class="btn verde">PIZZAS</span>
+                </label>
+                <input id="inPizzas" type="radio" name="filtros" value="PIZZA" [(ngModel)]="filtros">
+            </div>
+
+    <!-- bi BEBIDA CALIENTE -->
+            <div class="filtro">
+                <label for="inBebCal">
+                    <span class="btn verde">BEBIDAS CALIENTES</span>
+                </label>
+                <input id="inBebCal" type="radio" name="filtros" value="BEBIDA_CALIENTE" [(ngModel)]="filtros">
+            </div>
+
+    <!-- bi REFRESCO -->
+            <div class="filtro">
+                <label for="inRefrescos">
+                    <span class="btn verde">REFRESCOS</span>
+                </label>
+                <input id="inRefrescos" type="radio" name="filtros" value="REFRESCO" [(ngModel)]="filtros">
+            </div>
+
+    <!-- bi VACIO -->
+            <div class="filtro">
+                <label for="vacio">
+                    <span class="btn verde">TODOS</span>
+                </label>
+                <input id="vacio" type="radio" name="filtros" value="" [(ngModel)]="filtros">
+            </div>
+        </div>
+
+<!-- bi BOTONES AUXILIARES -->
+        <div class="ultimoHijo">
+            <button class="btn" (click)="mostrarPedido()">Pedido</button>
+            <div *ngIf="level == 4">
+                <label for="in_mes">Mesa:</label>
+                <input class="mesa_cam" type="number" [(ngModel)]="mesa_camarero" id="in_mes">
+            </div>
+            <button *ngIf="mesado" class="btn camarero" (click)="pedirAyuda()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dice-6-fill" viewBox="0 0 16 16">
+                    <path d="
+                    M7.5.5A.5.5 90 017.5 6.5A.5.5 90 017.5.5L7.5 2L7.5 1.5A.5.5 90 007.5 5.5A.5.5 90 007.5 1.5ZM1 14.5L14 14.5L14 13C12.5 5 2.5 5 1 13L1 14.5L2 13.5A.5.5 90 0113 13.5L2 13.5M5 13.5L5.003 8.601C5.3065 8.4455 5.6025 8.3205 6.004 8.207L6 12L9 12L9.003 8.21C9.4325 8.3315 9.6835 8.447 9.998 8.5995L10 13.5L9 13.5L9 13L6 13L6 13.5ZM7 8L7 9C7 9.5 8 9.5 8 9L8 8Z
+                    "/>
+                </svg>
+            </button>
+        </div>
+
+    </div>
+
+<!-- pl PLATOS -->
+    <div class="platos">
+
+<!-- ag PLATO -->
+        <div class="plato" *ngFor="let plato of platos | pipoLista : filtros">
+
+            <img src="{{serverImg}}{{plato[0][1]}}" (click)="pedir(plato)" alt="Sin Foto">
+
+            <div class="infoPlato">
+                <h3 [ngClass]="{apagado: plato[2]}"> 
+                    {{plato[0][2]}}
+                    <button class="btn" (click)="pedir(plato)">+</button></h3>
+                <hr>
+
+                <div class="ingredientes">
+                    <span *ngFor="let ingrediente of plato[1]"> 
+                            <span [ngClass]="{tachado: tachado(ingrediente)}">
+                                <span class="ingrediente">
+                                {{limado(ingrediente)}}</span></span>,</span>
+                </div>
+
+                <br>
+                <span class="precio">{{plato[0][0] | currency:'EUR':true }}</span>
+                <br>
+            </div>
+
+
+        </div>
+
+    </div>    
+</div>
+
+<!-- ag MENÚ APARTE CON EL PEDIDO REALIZADO. -->
+<div class="pedido" *ngIf="pedido">
+        <h3>PEDIDO</h3>
+        <hr>
+        <button class="btn cerrar" (click)="mostrarPedido()">X</button>
+<!-- bi La tabla con lo pedido. -->
+        <table *ngIf="!qr;else elQR">
+            
+            <ng-container *ngIf="!bloqueado;else enCocina">
+                <tr *ngFor="let plate of platosPedidos;let i = index">
+            <!-- ps Nombre -->
+                    <td class="tb_nombre">{{plate.nombre}}</td>
+            <!-- ps Precio -->
+                    <td class="tb_precio">{{plate.precio | currency:'EUR':true}}</td>
+            <!-- ps Botón Cerrar -->
+                    <td class="tb_cerrar">
+                        <span class="btn borrar_el" (click)="borrar(i)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                        </span>
+                    </td>
+                </tr>
+            </ng-container>
+<!-- bi La tabla cuando cocina empieza a cocinar. -->
+            <ng-template #enCocina>
+               <ng-container *ngIf="miPedido">
+                <tr *ngFor="let item of miPedido">   
+                    <td>
+                        {{expandido(item)[0]}}
+                    </td>
+                    <td [ngClass]="{listo: expandido(item)[1]}">
+                        <svg *ngIf="expandido(item)[0] != 'Mesa'"
+                    xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                        <path 
+                            d="
+                            M5 6 7 9.5A.5.5 90 007.5 9.5L12.5 3.5A.5.5 90 0012 3.5L7.5 8.5 5.5 6A.5.5 90 005 6M3.5 6 5.5 9.5A.5.5 90 006 9.5L11 3.5A.5.5 90 0010.5 3.5L6 8.5 4 6A.5.5 90 003.5 6 
+                            "
+                            />
+                    </svg>
+                    </td>
+                </tr>
+               </ng-container>
+            </ng-template>
+
+        </table>
+
+<!-- bi El QR con el pedido. -->
+        <ng-template #elQR>
+            <div class="qr">
+                <qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'L'"></qrcode>
+            </div>
+        </ng-template>
+<!-- bi Los botones de abajo -->
+        <button class="btn guardar" (click)="guardarPedido()">Guardar</button>
+        <!-- {{bloqueado | json}} -->
+        <button *ngIf="mesado || level == 4" class="btn mandar {{bloq(bloqueado)}}" (click)="mandarPedido()">Cocina</button>
+
+        <button class="btn mandar" (click)="generarQR()">{{textoBoton()}}</button>
+        
+   
+</div>

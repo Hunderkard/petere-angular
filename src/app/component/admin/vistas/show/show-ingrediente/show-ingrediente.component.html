@@ -1,0 +1,25 @@
+<div class="contenedor">
+<!-- ag DATOS ###############################-->
+        <div class="datos">
+            <h1>{{ingrediente.nombre}}</h1>
+            <hr>
+            Valor: {{ingrediente.valor}} céntimos por cada {{ingrediente.unidad_de_medida}}.
+            <hr>
+            Stock: {{ingrediente.stock}} {{ingrediente.unidad_de_medida}}
+            <hr>
+            <div class="obervaciones">
+                <span class="">Observaciones:</span>
+                <textarea readonly disabled>{{ingrediente.observaciones}}</textarea>
+            </div>
+<!-- bi BOTONES ########################### -->
+        <div class="botones">
+            <button class="btn editar" routerLink="../{{ingrediente.id}}/edit">Editar</button>
+            <button class="btn borrar" (click)='onDelete()'>Borrar</button>
+        </div>
+        </div>
+
+<!-- ag FOTO ###############################-->
+        <div class="foto">
+            <img [src]="urlImg" alt="Nada">
+        </div>
+</div>

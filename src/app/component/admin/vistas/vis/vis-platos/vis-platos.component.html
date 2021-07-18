@@ -1,0 +1,40 @@
+<div class="contenedor">
+<!-- ag BUSCADOR -->
+  <input type="text" class="form-control" placeholder="Buscar..." 
+  name="filtroNombre" [(ngModel)]="filtroNombre">
+  
+  <br>
+<!-- ag TABLA -->
+  <table *ngIf="platos" class="table">
+      
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Precio</th>
+        <th scope="col" title="Si tiene una foto propia.">Foto Activa</th>
+
+      </tr>
+    </thead>
+<!-- {{platos | json}} -->
+    <tbody >
+      <tr *ngFor="let plato of platos | pipoNombre: filtroNombre">
+        <th class="prescindible" scope="row">{{plato.id}}</th>
+        <td routerLink="/admin/plato/{{plato.id}}">{{plato.nombre}}</td>
+        <td>{{plato.precio.toFixed(2)}} €</td>
+        <td class="prescindible " >
+            <div *ngIf="plato.foto != 'sin_imagen.png';else sinFoto" class="form-check form-switch">  
+                <input class="form-check-input" type="checkbox" checked disabled>
+            </div>
+            <ng-template #sinFoto>
+                <div class="form-check form-switch">  
+                    <input class="form-check-input" type="checkbox" disabled>
+                </div>
+
+            </ng-template>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>

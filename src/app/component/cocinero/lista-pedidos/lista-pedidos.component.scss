@@ -1,0 +1,72 @@
+@import "src/styles.scss";
+
+.azul{
+    color:blue;
+}
+.gris{
+    color: grey;
+}
+.contenedor{
+    border-radius: 16px;
+    box-shadow: -1rem 0 3rem #000;
+    background-color: var(--negro);
+    padding: 0.5rem;
+    display: grid;
+    grid:
+    "lista" auto
+    "pedido" auto
+    / 100%;
+
+    .lista{
+        display: flex;
+        grid-area: lista;
+        background-color: var(--negro);
+        justify-content: space-around;
+        padding: 1rem;
+        div{
+            @include borde(var(--coolors3), 2px);
+            // &.el_de_abajo{
+            //     @include borde(var(--coolors3), 2px);
+            // }
+            color:#16225D;
+            hr{
+                color: #D7D298;
+            }
+            font-family: cursive;
+            background-color: #F2EEB1;
+            height: 10rem;
+            padding: 0.75rem;
+            width: 15%;
+            min-width: 100px;
+            border-radius: 10%;
+            overflow: auto;
+            &::-webkit-scrollbar{ //fu webkit es para chrome, no hay para mozilla.
+                width: 0.5rem;
+            }
+        
+            &::-webkit-scrollbar-track{ //fu El carril por el que se mueve la barra.
+                background-color: var(--colorTerciario1);
+            }
+        
+        
+            &::-webkit-scrollbar-thumb{  //fu La barra en sí.
+                background-color: var(--colorSecundario);
+            }
+        }
+        span{
+            font-size: var(--m1);
+        }
+    }
+
+    .pedidos{
+        grid-area: pedido;
+
+        color:#16225D;
+        hr{
+            color: #D7D298;
+        }
+        font-family: cursive;
+        background-color: #F2EEB1;
+        font-size: var(--m2);
+    }
+}

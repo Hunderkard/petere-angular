@@ -1,0 +1,95 @@
+@import "src/styles.scss";
+
+.contenedor{
+    background-color: var(--negro);
+    box-shadow: -1rem 0 3rem #000;
+    border-radius: 16px;
+    padding: var(--p2);
+    color: var(--coolors3);
+form{
+table{
+    color: var(--coolors3);
+    // .titulos{
+    //     display: flex;
+    //     justify-content: space-between;
+        
+    // @include movil{
+    //     display:none;
+    // }
+    // }
+
+    .fila{
+        display:grid;
+        justify-content: space-around;
+        align-items: center;    
+        grid:
+        "id nom ema lev mes"
+        /10% 20% 30% 10% 10%;
+    @include tablet{
+        grid:
+        "nom ema"
+        "lev mes"
+        /40% 40%;
+    }
+    @include movil{
+        grid: 
+        "nom"
+        "ema"
+        "lev"
+        "mes";
+    }
+        
+
+        .id{
+            grid-area: id;
+            @include tablet{
+                display:none;
+            }
+        }
+        .nombre{
+            grid-area: nom;
+        }
+        .email{
+            grid-area: ema;
+        }
+        .level{
+            grid-area: lev;
+        }
+        .mesa{
+            grid-area: mes;
+        }
+    }
+}
+}
+
+    input{
+        width: 100%;
+        &:focus{
+            color:var(--coolors4);
+        }
+    }
+    .in{
+        background-color: var(--coolors1);
+        border-color: var(--coolors4);
+        color: var(--coolors3);
+    }
+    .actualizar{
+        position: fixed;
+        top: 1rem;
+    @include movil{
+        top: 5rem;
+    }
+        right: 1rem;
+
+        z-index: 3;
+        border:solid;
+        border-color: var(--coolors1);
+        background-color: var(--negro);
+        width: 100px;
+        color: var(--coolors4);
+    }
+    
+}
+
+
+

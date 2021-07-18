@@ -1,0 +1,207 @@
+@import "src/styles.scss";
+//ag Unas variables
+
+    $text-primary:          var(--coolors3);
+    $text-secondary:        var(--coolors3);
+    $bg-primary:            var(--negro);
+    $bg-secondary:          var(--coolors1);
+    $speed-transation: 500ms;
+
+:root{  //ps No sé si el raíz ha de estar en el componente principal o en cada componente.
+    font-size: 16px;
+}
+
+*{
+    z-index: 50;
+}
+
+ul{
+    list-style-type:none;
+}
+
+/*
+ 
+     /$$                               /$$   
+    /$$/                              |  $$  
+   /$$/  /$$$$$$$   /$$$$$$  /$$    /$$\  $$ 
+  /$$/  | $$__  $$ |____  $$|  $$  /$$/ \  $$
+ |  $$  | $$  \ $$  /$$$$$$$ \  $$/$$/   /$$/
+  \  $$ | $$  | $$ /$$__  $$  \  $$$/   /$$/ 
+   \  $$| $$  | $$|  $$$$$$$   \  $/   /$$/  
+    \__/|__/  |__/ \_______/    \_/   |__/   
+                                                     
+ 
+*/
+
+.navbar{ 
+    position:fixed;
+    background-color: $bg-primary;
+    color: $text-primary;
+    transition: $speed-transation;
+
+    top: 0; 
+    width: 5rem;    
+    height: 100vh;  
+    margin: 0;
+    padding: 0;
+
+    
+    @include movil{
+        top: 0;
+        width: 100vw;
+        height: 5rem;
+    }
+    
+&:hover{
+    .logo{
+        background-color: $bg-secondary;
+        .nav-link{
+            filter: grayscale(0%) opacity(1);
+        }
+        .link-text{
+            margin-left: 2rem;
+            color: $text-secondary;
+        }
+        svg{
+            transform: rotate(-360deg);
+        }
+    }
+
+    @include escritorio{
+        width: 14rem;
+        .link-text{
+            display:inline;
+            transition: opacity($speed-transation);
+        }
+        .nav-link:hover{
+            .link-text{
+                color: $text-secondary;
+            }
+        }
+    }
+}
+}
+
+/*
+ 
+     /$$           /$$ /$$   
+    /$$/          | $$|  $$  
+   /$$/  /$$   /$$| $$ \  $$ 
+  /$$/  | $$  | $$| $$  \  $$
+ |  $$  | $$  | $$| $$   /$$/
+  \  $$ | $$  | $$| $$  /$$/ 
+   \  $$|  $$$$$$/| $$ /$$/  
+    \__/ \______/ |__/|__/   
+                                
+ 
+*/
+
+.navbar-nav{ //<ul>
+   
+    margin: 0;
+    padding: 0;
+    height: 100%;   //pl Con esto ajusto todo al cambiante tamaño del navbar.
+    width: 100%;    //pl Tanto a lo alto, para el logout, y el ancho.
+    display:flex;   //bi Funciona sin el display, pero por si las moscas.
+    flex-direction: column;
+@include movil{  
+    flex-direction: row;
+}
+}
+
+/*
+ 
+     /$$ /$$ /$$ /$$   
+    /$$/| $$|__/|  $$  
+   /$$/ | $$ /$$ \  $$ 
+  /$$/  | $$| $$  \  $$
+ |  $$  | $$| $$   /$$/
+  \  $$ | $$| $$  /$$/ 
+   \  $$| $$| $$ /$$/  
+    \__/|__/|__/|__/   
+                         
+ 
+*/
+
+.nav-item{ //<li>
+    width: 100%;
+    a{
+    @include movil{
+        height: 100%;
+    }
+    }
+}
+.ultimoHijo{ // <li> El último.
+    
+    margin-top:auto;    //ha Mando el último hijo abajo del todo.
+    @include movil{
+        margin-top: 0;
+    }
+}
+.logo{  // <li> El primero.
+@include movil{
+    display:none;
+}
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: $text-secondary;
+    background-color: $bg-primary;
+    font-size: 1.5rem;
+    letter-spacing: 0.3ch;
+    width: 100%;
+
+    svg{
+        transform: rotate();
+        transition: 2000ms;
+    }
+}
+
+/*
+ 
+     /$$           /$$   
+    /$$/          |  $$  
+   /$$/   /$$$$$$  \  $$ 
+  /$$/   |____  $$  \  $$
+ |  $$    /$$$$$$$   /$$/
+  \  $$  /$$__  $$  /$$/ 
+   \  $$|  $$$$$$$ /$$/  
+    \__/ \_______/|__/   
+                         
+ 
+*/
+.nav-link{ // <a>
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+@include movil{
+    justify-content: center;
+}
+    height: var(--g2);
+    color: $text-primary;
+    font-weight: bold;
+    text-decoration: none;
+    filter: grayscale(80%) opacity(0.7);
+    transition: $speed-transation;
+
+    .link-text{ // <span>
+            display:none;
+        }
+    svg{
+        margin: var(--m2);
+        @include movil{
+            margin: 0;
+            transform: scale(0.8);
+        }
+        @include movilPeq {
+            transform: scale(0.7);
+        }
+
+    }
+
+
+&:hover{
+    filter: grayscale(0%) opacity(1);
+    background-color: $bg-secondary;
+} 
+}

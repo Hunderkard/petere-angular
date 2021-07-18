@@ -1,0 +1,97 @@
+:root{
+    // /* COLORES */
+    // --colorPrimario1:#B7EF6B;
+    // --colorPrimario:#6A962D;
+    // --colorPrimario3:#203108;
+    // --colorSecundario1:#FFA772;
+    // --colorSecundario:#A45C31;
+    // --colorSecundario3:#361908;
+    // --colorTerciario1:#905EC0;
+    // --colorTerciario:#4B276F;
+    // --colorTerciario3:#160824;
+
+/* verder[6aee59(Ojimetro) 99ff33(pistacho) 97c491(original)]  amarillo [CFD11A]*/
+    
+    --coolors1:#595959;
+    --coolors2:#808F85;
+    --coolors3:#00ffff;
+    --coolors4:#ff8800;
+    --coolors5:#F2E9DC;
+    --blanco:#efefef;
+    --negro:#34393e;
+
+
+    /* LETRAS PEQUEÑAS */
+    --p1:0.6rem;
+    --p2:0.8rem;
+    /* LETRAS MEDIANAS*/
+    --m1:1rem;
+    --m2:1.5rem;
+    /* LETRAS GRANDES*/
+    --g1:3rem;
+    --g2:4rem;
+}
+
+
+@mixin borde($color: black, $px: 1px) {
+    border: solid;
+    border-color: $color;
+    border-width: $px;
+}
+
+@mixin movilPeq(){
+    @media only screen and (max-width: 460px){
+        @content
+    }  
+};
+
+@mixin movil(){
+    @media only screen and (max-width: 600px){
+        @content
+    }
+};
+
+@mixin tablet(){
+    @media only screen and (max-width: 720px){
+        @content
+    }
+};
+
+@mixin escritorio(){
+    @media only screen and (min-width: 600px){
+        @content
+    }
+};
+
+@mixin pantallaGrande(){
+    @media only screen and (min-width: 1150px){
+        @content
+    }
+}
+
+html{
+    height: 100vh;
+    body{
+        background-color: var(--blanco);
+    }
+}
+
+// Tue-05/01 11:35:12 Intento cambiar la barra de scroll en toda la página.
+    body::-webkit-scrollbar{
+        width: 10px;
+        height: 10px;
+    }
+    body::-webkit-scrollbar-thumb{ 
+        background: rgb(0,0,0);
+        background: linear-gradient(0deg, rgba(0,0,0,1) 31%, rgba(255,255,255,1) 51%, rgba(0,0,0,1) 74%); 
+        border-radius: 10px;
+    }
+    body::-webkit-scrollbar-track{
+        background: rgb(2,0,36);
+        background: -moz-linear-gradient(57deg, rgba(2,0,36,1) 20%, rgba(9,9,121,1) 45%, rgba(0,212,255,1) 80%);
+        background: -webkit-linear-gradient(57deg, rgba(2,0,36,1) 20%, rgba(9,9,121,1) 45%, rgba(0,212,255,1) 80%);
+        background: linear-gradient(57deg, rgba(2,0,36,1) 20%, rgba(9,9,121,1) 45%, rgba(0,212,255,1) 80%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#00d4ff",GradientType=1); 
+    }
+
+      

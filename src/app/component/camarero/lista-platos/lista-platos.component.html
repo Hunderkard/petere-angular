@@ -1,0 +1,47 @@
+<h1 *ngIf="tokenErr">Hubo un problema con el token, por favor, recarge la página.</h1>
+<div *ngIf="!tokenErr" class="contenedor">
+<ayuda></ayuda>
+<hr>
+<div class="lista_platos">
+    <div class="titulo">
+        <span>Plato</span>
+        <span>Mesa</span>
+        <span>Camarero</span>
+    </div>
+<hr>
+<ng-container *ngIf="mostrar_platos;else botonMostrar" >
+        <div class="plato" *ngFor="let plato of platos;let i = index">
+        <div>{{plato[1]}}</div>
+        <div> Mesa {{plato[0]}}</div>
+        
+        <ng-container *ngIf="!plato[2]; else tuNombre">
+            <div class="botones">
+                <button class="btn ir" (click)="voy(i)">Ir</button>
+            </div>
+        </ng-container>
+
+        <ng-template #tuNombre >
+            <ng-container *ngIf="plato[2] == nombre; else otroNombre">
+                <div class="botones">
+                    <button class="btn no_ir" (click)="no_voy(i)">Dejar de ir</button>
+                    <button class="btn ido" (click)="borrar(i)">X</button>
+                </div>
+            </ng-container>
+        </ng-template>
+
+        <ng-template #otroNombre>
+            <div class="botones">
+                <span class="otro_color">Yendo {{plato[2]}}</span>
+            </div>
+        </ng-template>
+
+        </div>
+</ng-container>
+
+<ng-template #botonMostrar>
+    <div class="plato">
+        <button class="mostrar" (click)="mostrar()">Mostrar Lista</button>
+    </div>
+</ng-template>
+</div>
+</div>

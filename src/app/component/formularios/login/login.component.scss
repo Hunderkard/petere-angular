@@ -1,0 +1,41 @@
+@import "src/styles.scss";
+
+.error{
+  color: var(--coolors4);
+  background-color: var(--coolors1);
+  font-size: var(--p2);
+  text-align: center;
+}
+
+.errorHTTP{
+  color: var(--coolors4);
+  background-color: var(--coolors1);
+  font-size: var(--m2);
+  text-align: center;
+}
+
+
+.flex-container {
+
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  
+  .cuadro { 
+      
+    box-shadow: -1rem 0 3rem #000;
+    color: var(--coolors3);
+    background-color: var(--negro);
+    padding: var(--m1);
+    border-radius: 25px;
+
+    button{
+      background-color: var(--coolors3);
+    }
+    small>a{
+      color: var(--coolors4)
+    }
+  }
+  
+}

@@ -1,0 +1,60 @@
+@import "src/styles.scss";
+
+img{
+    max-width: 200px;
+    width: 100%;
+    &.pristino{
+        @include borde(var(--coolors3));
+    }
+    &.tocado{
+        @include borde(var(--coolors4));
+    }
+}
+input{
+    color:var(--coolors3);
+    &:focus{
+        color:var(--coolors4);
+    }
+}
+hr{
+    border:solid;
+    border-color: var(--coolors4);
+    color: var(--coolors4);
+}
+.contenedor{
+    background-color: var(--negro);
+    box-shadow: -1rem 0 3rem #000;
+    border-radius: 16px;
+    padding: var(--p2);
+    form{
+    @include movilPeq{
+        transform: scale(0.9);
+    }
+    }
+
+    .logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .actualizar{
+        margin: var(--p1);
+        background-color: var(--coolors3);
+    }
+}
+
+.pristino{
+    border:solid;
+    border-color:var(--coolors3);
+    background-color: var(--coolors1);
+}
+
+.tocado{
+    border:solid;
+    border-color:var(--coolors4);
+    background-color: var(--coolors1);
+}
+
+#logo{
+    display: none;
+}

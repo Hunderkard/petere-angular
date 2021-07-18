@@ -1,0 +1,50 @@
+@import "src/styles.scss";
+.error{
+    color: var(--coolors4);
+    background-color: var(--coolors1);
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.contenedor{
+    background-color: var(--negro);
+    box-shadow: -1rem 0 3rem #000;
+    border-radius: 16px;
+    color: var(--coolors3);
+    padding: var(--m1);
+    
+    .datos{
+        display: grid;
+        grid: "nom con niv";
+        gap: var(--p2);
+
+        @include movil{
+            grid: 
+            "nom con"
+            "niv niv";
+        }
+        @include movilPeq{
+            grid: 
+            "nom"
+            "con"
+            "niv";
+        }
+        .nombre{
+            grid-area: nom;
+        }
+        .contra{
+            grid-area: con;
+        }
+        .nivel{
+            grid-area: niv;
+        }
+    }
+    .email{
+        margin-top: var(--p2);
+    }
+    .crear{
+        margin-top: var(--p2);
+        background-color: var(--coolors3);
+    }
+
+}

@@ -1,0 +1,131 @@
+@import "src/styles.scss";
+
+.ing{
+    grid-area: ing;
+}
+.pla{
+    grid-area: pla;
+}
+.men{
+    grid-area: men;
+}
+.usu{
+    grid-area: usu;
+}
+
+.contenedor{
+    margin-left: -1rem;
+    margin-right: -2rem;
+    height: 80vh;
+    min-height: 480px;
+    color:var(--blanco);
+    display: flex;
+    @include movil{
+        flex-direction: column;
+        align-items: center;
+    }
+    padding: 3rem;
+
+
+    .menu{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        height: 350px;
+        width: 500px;
+        min-width: 250px;
+        @include movil{
+        width: 250px;
+        min-width: 200px;
+        }
+        padding: 1.5rem;
+
+        border-radius: 16px;
+        box-shadow: -1rem 0 3rem #000;
+        background-color: var(--negro);
+
+        transition: 0.5s;
+
+        .enlaces{
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            justify-content: space-evenly;
+            a{
+                text-decoration: none;
+                color: var(--coolors2);
+                display: flex;
+                height: 100%;
+                flex-direction: column;
+                justify-content: space-evenly;
+
+            &:hover{
+                text-decoration: underline;
+                color:var(--coolors4);
+            }
+            }
+        }
+
+        &:hover{
+            transform: translateY(-2rem);
+            }
+        &:hover~.menu{
+            transform: translateX(3rem);
+        }
+        &:not(:first-child){
+            margin-left: -2rem;
+        }
+
+        @include movil{
+            
+        &:hover{
+            transform: translateX(1rem);
+            }
+        &:hover~.menu{
+            transform: translateY(240px);
+        }
+        &:not(:first-child){
+            margin-left: 0;
+            margin-top: -250px;
+        }
+        }
+            
+
+    }
+
+  
+}
+
+
+// hr{
+//     border-top:solid;
+//     border-color: var(--coolors4);
+//     height: 0;
+// }
+// .contenedor{
+//     display: grid;
+//     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+//     gap: var(--m2);
+
+//     .fila{
+//         padding: 1rem;
+//         border-radius: 10%;
+//         background-color: var(--negro);
+//         h3{
+//             display: inline;
+//             color:var(--coolors3);
+//         }
+//         .enlaces{
+//             display: inline;
+//             a{
+//                 text-decoration: none;
+//                 color: var(--coolors2);
+
+//             &:hover{
+//                 text-decoration: underline;
+//                 color:var(--coolors4);
+//             }
+//             }
+//         }
+//     }
+// }

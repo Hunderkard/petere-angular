@@ -1,0 +1,117 @@
+<!-- Wed-27/01 11:22:47 Apenas tengo tiempo -->
+<div class="contenedor">
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()" >
+
+        <div class="fila_arriba">   
+    <!-- ag NOMBRE #################################-->
+            <div class="nombre">
+                <label for="inNombre">Nombre</label>
+                <input type="text" class="form-control" id="inNombre"
+                formControlName="nombre">
+    <!-- fu ERRORES -->
+        <div class="error"
+        *ngIf=" formulario.controls.nombre.errors?.required &&
+                formulario.controls.nombre.touched"
+        >
+            Este campo es oblitagorio.
+        </div>
+            </div>
+
+    <!-- ag PRECIO #################################-->
+            <div class="precio">
+                <label for="inPrecio">Precio</label>
+                <input type="number" min="0" step="0.01" class="form-control" id="inPrecio"
+                formControlName="precio">
+            </div>
+
+    <!-- ag COSTE #################################-->
+            <div class="coste">
+                <label for="outCoste">Coste</label>
+                <input type="number" id="outCoste" class="form-control" readonly
+                formControlName="coste">            
+            </div>
+        </div>
+
+        <div class="fila_abajo">
+    <!-- ag DESCRIPCIÓN #################################-->
+            <div class="descripcion">
+                <label for="inDescripcion">Descripcion</label>
+                <textarea class="form-control" id="inDescripcion"
+                formControlName="descripcion"></textarea>
+            </div>
+
+    <!-- ag BTN AGREGAR INGREDIENTE #################################-->
+            <div class="btn_agregar">
+                <span readonly class="btn agregar" (click)="agregar()">Agregar Ingrediente</span>
+            </div>
+
+    <!-- ag BTN CALCULAR COSTE #################################-->
+            <div class="btn_calcular">
+                <span class="btn calcular" id="btnCalcula" (click)="calcularCosteFinal()"> Calcula</span>   
+            </div>
+        </div>
+
+    <hr class="gordo">
+
+    <!-- ag IMAGEN #################################-->
+        <div class="imagen">
+    <!-- bi IN IMAGEN -->
+        <div class="in_imagen">
+            <label for="inImagen" class="form-label"> Foto plato:</label>
+
+            <input class="form-control" 
+                type="file" id="inImagen"
+                name="imagen"
+                formControlName="foto"
+                (change)="onChange($event)">
+        </div>
+            <div class="out_imagen" *ngIf="imgUrl && imgUrl !== ''">
+                <img [src]="imgUrl" id="img" width="300" height="300" alt="Ninguna imagen seleccionada">
+            </div>
+        </div>
+
+    <hr class="gordo">
+    <!-- ag INGREDIENTES #################################-->
+        <div formArrayName="ingredientes" *ngFor="let item of formulario.controls.ingredientes['controls']; index as i">
+    
+            <div class="row" [formGroupName]="i">
+                <!-- pl NOMBRE -->
+                <div class="col-4">
+                    <select class="form-control" (change)="tasar(item)"
+                    formControlName="nombre">
+                        <option value="" selected disabled hidden >Seleccione un ingrediente:</option>
+                        <option *ngFor="let ing of listaIngredientes" value="{{ing[0]}}|{{ing[2]}}">{{ing[1]}} ({{ing[3]}})</option>
+                    </select>
+                </div>
+
+                <!-- lu CANTIDAD -->
+                <div class="col-4">
+                    <input class="form-control" type="number" min="0" 
+                    formControlName="cantidad" (change)="tasar(item)">
+                </div>
+
+                <!-- el COSTE -->
+                <div class="col-2">
+                    <input type="number" class="form-control" readonly 
+                    formControlName="coste" >
+                </div>
+
+                <!-- fu BORRAR -->
+                <div class="col-2">
+                    <span class="btn borrar_el" (click)="borrar(i)">
+                        <svg 
+                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <hr>
+        </div>
+
+        <hr>
+    <!-- ag BOTÓN CREAR ############################# -->
+        <button type="submit" class="btn crear" [disabled]="formulario.invalid">Crear</button>
+    </form>
+</div>

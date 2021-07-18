@@ -1,0 +1,17 @@
+<div class="contenedor">
+
+    <div class="menu" *ngIf="!mostrarQR">
+        <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+            <input type="text" id="inMesa" formControlName="mesa">
+        <button type="submit" class="btn boton"[disabled]="formulario.invalid">QR</button>
+        </form>
+    </div>    
+
+
+    <div class="qr"  *ngIf="mostrarQR">
+        <qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+        <button class="btn boton" (click)="cambio()">Menú</button> 
+    </div>
+
+</div>
+

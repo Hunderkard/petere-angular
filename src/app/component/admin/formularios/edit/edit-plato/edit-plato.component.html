@@ -1,0 +1,84 @@
+<div class="contenedor">
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()"> <!-- ps EMPIEZA FORMULARIO -->
+
+<!-- ag NOMBRE ##########################################-->
+    <h1>
+        <input type="text" class='form-control {{limpio(formulario.controls.nombre.pristine)}}' formControlName="nombre">
+    </h1>
+
+<!-- ag DATOS ############################################-->
+    <div class="datos">
+<!-- bi PRECIO ###########################################-->
+        <div class="precio"> 
+            <label for="inPrecio">Precio:</label>
+            <input type="number" step="0.01" class='{{limpio(formulario.controls.precio.pristine)}} form-control' id="inPrecio" formControlName="precio">
+        </div>
+<hr>
+<!-- bi OBSERVACIONES ###################################-->
+        <div class="observaciones">
+            <span>Observaciones:</span>
+            <textarea rows="10" [class]="limpio(formulario.controls.observaciones.pristine)" formControlName="observaciones"></textarea>
+        </div>
+    </div>
+
+<!-- ag IMAGEN ###########################################-->
+    <div class="foto">
+        <label for="inImagen">
+            <img [class]="limpio(formulario.controls.foto.pristine)" [src]="imgUrl" alt="Nada">
+        </label>
+        <input type="file" id="inImagen" formControlName="foto" (change)="onChange($event)"    >
+    </div>
+
+<!-- ag BTN AGREGAR ######################################-->
+<span readonly class="btn agregar" (click)="agregar()">Agregar Ingrediente</span>
+
+<!-- ag INGREDIENTES #####################################-->
+<table class="table">
+    <thead>
+        <tr>
+        <th>Ingrediente</th>
+        <th>Cantidad</th>
+        <th>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+            </svg>
+        </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr formArrayName="ingredientes" *ngFor="let ingrediente of formulario.controls['ingredientes']['controls']; index as i">
+            <td [formGroupName]="i">
+                <select class="form-control {{limpio(ingrediente.controls.nombre.pristine)}}" formControlName="nombre">
+                    <option value="" selected disabled hidden >Seleccione un ingrediente:</option>
+                    
+                    <ng-container *ngFor="let ing of listaIngredientes">
+                        <option *ngIf="ingrediente.controls.nombre.value != ing[1]; else seleccionada" value="{{ing[1]}}"> {{ing[1]}} ({{ing[2]}})</option>
+                        <ng-template #seleccionada>
+                            <option value="{{ing[1]}}" selected> {{ing[1]}} ({{ing[2]}})</option>
+                        </ng-template>
+                    </ng-container>
+                </select>
+            </td>
+
+            <td [formGroupName]="i">
+                <input class="form-control {{limpio(ingrediente.controls.cantidad.pristine)}}" type="number" formControlName="cantidad"> 
+            </td>
+
+            <td>
+                <span class="btn borrar_el" (click)="borrar(i)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                    </svg>
+                </span>
+            </td>
+<!--formulario.get('ingredientes')['controls']  formulario.controls['ingredientes']['controls'] -->
+        </tr>
+    </tbody>
+</table>
+
+<button type="submit" class="btn actualizar"[disabled]="formulario.invalid">Actualizar</button>
+</form> <!-- ps TERMINA FORMULARIO -->
+</div>

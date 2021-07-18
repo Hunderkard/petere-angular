@@ -1,0 +1,36 @@
+@import "src/styles.scss";
+
+img{
+    height: var(--g1);
+}
+.contenedor{
+    padding:var(--p1);
+    background-color: var(--negro);
+    box-shadow: -1rem 0 3rem #000;
+    border-radius: 16px;
+  
+    // input{}
+
+    // br{}
+
+    table{
+    color:var(--coolors3);
+    text-align: center;
+
+        thead{
+            @include movil{
+            display: none;
+            }
+        }
+        tbody{
+            .prescindible{
+                @include movilPeq{
+                    display: none;
+                }
+            }
+        }
+    }
+    
+
+
+}

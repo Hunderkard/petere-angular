@@ -1,0 +1,57 @@
+@import "src/styles.scss";
+
+.error{
+    color: var(--coolors4);
+    background-color: var(--coolors1);
+    font-size: var(--p2);
+    text-align: center;
+  }
+
+.contenedor{
+    height: 100vh;
+    display: grid;
+    column-gap: var(--g1);
+    grid:
+    "calendario info"
+    / 30% 50%;
+    @include tablet{
+        grid:
+        "calendario"
+        "info";
+    }
+
+    .calendario, .info{
+        
+        box-shadow: -1rem 0 3rem #000;
+        border-radius: 15px;
+        background-color: var(--negro);
+        color: var(--coolors3);
+        place-self: center;
+        padding: var(--m1);
+    }
+    .calendario{
+        grid-area: calendario;
+
+    }
+    .info{
+        grid-area: info;
+        
+        .otrosDatos{
+            padding: var(--m1);
+            .seleccionada{
+                margin:-1px;
+                color:var(--coolors4);
+                @include borde(var(--coolors5));
+                background-color: var(--coolors2);
+                border-radius: 10px;
+            }
+        }
+        input[type="checkbox"]{
+            display: none;
+        }
+    }
+ 
+    button{
+        background-color: var(--coolors3);
+    }
+}

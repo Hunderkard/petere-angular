@@ -1,0 +1,64 @@
+@import "src/styles.scss";
+
+textarea{
+    resize: none;
+    width: 100%;
+}
+
+img{
+    height: 150px;
+}
+
+.contenedor{
+    color:var(--coolors3);
+    background-color: var(--negro);
+    box-shadow: -1rem 0 3rem #000;
+    border-radius: 16px;
+    padding: var(--p2);
+
+    display: grid;
+    grid: "dat fot";
+@include movil{
+    grid:
+    "dat"
+    "fot";
+
+}
+
+    .datos{
+        grid-area: dat;
+        hr{
+            color:var(--coolors4);
+        }
+        .botones{
+            display: flex;
+            justify-content: space-between;
+        }
+        .editar{
+            background-color: var(--coolors3);
+        }
+        .borrar{
+            color: var(--coolors4);
+            background-color: var(--coolors1);
+        }
+
+    }
+    
+    .foto{
+        margin-top: var(--p2);
+        grid-area: fot;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+
+
+/* Pantallas pequeñas */
+@media only screen and (max-width: 700px){
+    .fila{
+        flex-direction: column;
+    }
+}

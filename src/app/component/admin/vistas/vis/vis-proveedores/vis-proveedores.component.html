@@ -1,0 +1,29 @@
+<div class="contenedor">
+<!-- ag BUSCADOR -->
+  <input type="text" class="form-control" placeholder="Buscar..." 
+  name="filtroNombre" [(ngModel)]="filtroNombre">
+  
+  <br>
+<!-- ag TABLA -->
+  <table *ngIf="proveedores != null" class="table">
+
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Logo</th>
+      </tr>
+    </thead>
+<!-- {{proveedores | json}} -->
+    <tbody>
+      <tr *ngFor="let proveedor of proveedores | pipoNombre: filtroNombre">
+        <th scope="row">{{proveedor.id}}</th>
+        <td routerLink="/admin/proveedor/{{proveedor.id}}" class="centrado">{{proveedor.nombre}}</td>
+        <td class="prescindible">
+            <img class="rounded" src="{{imgUrl}}{{proveedor.foto}}" alt="Algo mal.">
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>

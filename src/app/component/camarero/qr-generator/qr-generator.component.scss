@@ -1,0 +1,16 @@
+@import "src/styles.scss";
+
+.contenedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: -1rem 0 3rem #000;
+    background-color: var(--negro);
+    .boton{
+        color: var(--coolors4);
+        background-color: var(--coolors1);
+        margin: 2rem;
+    }
+}

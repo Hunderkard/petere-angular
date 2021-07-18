@@ -1,0 +1,52 @@
+<!-- Fri-15/01 19:06:49 Hoy estoy terminando el login, el logout y ahora esto -->
+
+
+<div class="flex-container">
+    <div class="cuadro">
+        
+
+<!-- fu ERRORES HTTP -->
+        <div class="errorHTTP" *ngIf="error == 401">
+            El email o la contraseña no son correctos.
+        </div>
+        
+        <div class="errorHTTP" *ngIf="error == 404">
+            Un archivo no ha sido encontrado.
+        </div>
+
+        <div class="errorHTTP" *ngIf="error == 500">
+            Se te olvidó encender el XAMPP...
+        </div>
+
+<!-- ps EMPIEZA FORMULARIO -->
+        <form class="mb-3" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+<!-- ag EMAIL -->
+<!-- ag Tendrá un mensaje para el error por requerido y por el patrón. -->
+            <label for="inEmail" class="form-label">Email:</label>
+            <input  type="email" class="form-control"  placeholder="Correo electrónico" 
+                    id="inEmail" name="email"
+                    formControlName="email">
+<!-- fu ERRORES -->
+            <div class="error" *ngIf="  formulario.controls.email.errors?.required &&
+                                        formulario.controls.email.touched">
+                Este campo es obligatorio.
+            </div>
+            <div class="error" *ngIf="formulario.controls.email.errors?.pattern">
+                Esta dirección no es válida.
+            </div>
+            <br>
+
+<!-- ac BOTÓN SUBMIT -->
+            <button class="btn" type="submit" 
+                    [disabled]="!this.formulario.valid"> Mandar correo </button>
+
+ </form>
+<!-- ps TERMINA FORMULARIO -->
+
+        <!-- Valido: {{formulario.status}} -->
+
+    </div>
+</div>
+
+
+<footer></footer>

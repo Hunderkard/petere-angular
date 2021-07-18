@@ -1,0 +1,16 @@
+<div class="contenedor">
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <h1>
+        <input class="form-control {{limpio(formulario.controls.nombre.pristine)}}" type="text" formControlName="nombre">
+    </h1>
+<hr>
+<div class="logo">
+        <label for="logo"><br>
+            <img [class]="limpio(formulario.controls.foto.pristine)" [src]="imgUrl" alt="Ruta no encontrada">
+        </label>
+        <input type="file" id="logo" (change)="onChange($event)" formControlName="foto">
+</div>
+
+<button type="submit" class="btn actualizar"[disabled]="formulario.invalid">Actualizar</button>
+</form>
+</div>

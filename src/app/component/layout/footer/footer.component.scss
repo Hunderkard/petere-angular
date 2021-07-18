@@ -1,0 +1,43 @@
+@import "src/styles.scss";
+    
+span{
+    font-size: var(--p3);
+    font-weight: bold;
+}
+.contenedor{
+    display: grid;
+    background-color: var(--negro);
+    align-items: center;
+    grid-template:
+    "info . mapa" 10rem
+    /33% auto 50%;
+
+    margin-left: -1rem;
+    margin-right: -2rem;
+
+    @include movil{
+        margin-left: -2rem;
+        grid-template: 
+        "info"
+        "mapa";
+        justify-items: center;
+    }
+
+    .info{
+        grid-area: info;
+        padding: var(--m2);
+        span{
+            color:var(--coolors3);
+            font-size: var(--m1);
+        }
+    }
+
+    .map{
+        padding: var(--p3);
+        grid-area: mapa;
+        img{
+            max-width: 100%;
+            max-height: 9rem;
+        }
+    }
+}

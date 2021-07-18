@@ -1,0 +1,126 @@
+
+<!-- ps FORMULARIO -->
+    <form class="contenedor" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+<!-- pl CALENDARIO -->
+        <div class="calendario">
+            <label for="inFecha">Fecha:</label>
+            <input id="inFecha" class="form-control" type="date" formControlName="fecha">
+
+<!-- fu ERRORES ######################-->
+            <div class="error" *ngIf="  formulario.controls.fecha.errors?.required &&
+                                        formulario.controls.fecha.touched">
+                Este campo es obligatorio.
+            </div>
+        </div>
+
+<!-- ag INFORMACIÓN -->        
+        <div class="info">
+            <div class="row">
+<!-- hi NOMBRE -->
+                <div class="col-6">
+                    <label for="inNombre">A nombre de:</label>
+                    <input class="form-control" type="text" formControlName="nombre" id="inNombre">
+<!-- fu ERRORES ######################-->
+                    <div class="error" *ngIf="  formulario.controls.nombre.errors?.required &&
+                                                formulario.controls.nombre.touched">
+                        Este campo es obligatorio.
+                    </div>
+                </div>
+<!-- ac TELEFONO -->
+                <div class="col-6">
+                    <label for="inTlfn">Número de teléfono:</label>
+                    <input class="form-control" type="tel" formControlName="telefono" id="inTlfn">
+                      
+<!-- fu ERRORES ######################-->
+                    <div class="error" *ngIf="  formulario.controls.telefono.errors?.required &&
+                                                formulario.controls.telefono.touched">
+                        Este campo es obligatorio.
+                    </div>
+                </div>
+<!-- bi PERSONAS -->
+                <div class="col-6">
+                    <label for="inPersonas">Personas:</label>
+                    <input id="inPersonas" class="form-control" type="number" formControlName="personas"> 
+                       
+<!-- fu ERRORES ######################-->
+                    <div class="error" *ngIf="  formulario.controls.personas.errors?.required &&
+                                                formulario.controls.personas.touched">
+                        Este campo es obligatorio.
+                    </div>
+                </div>
+<!-- dr HORA -->
+                <div class="col-6">
+                    <label for="inHora">Hora:</label>
+                    <input class="form-control" formControlName="hora" id="inHora" type="time" min="13:00" max="16:00" value="12:00" />
+             
+<!-- fu ERRORES ######################-->
+                    <div class="error"*ngIf="   formulario.controls.hora.errors?.required &&
+                                                formulario.controls.hora.touched">
+                        Este campo es obligatorio.
+                    </div>
+                </div>
+<!-- el EMAIL -->   
+                <div class="col-12">
+                    <label for="inEmail">Introduzca email:</label>
+                    <input id="inEmail" class="form-control" type="email" formControlName="email">
+<!-- fu ERRORES ######################-->
+                    <div class="error" *ngIf="  formulario.controls.email.errors?.required &&
+                                                formulario.controls.email.touched">
+                        Este campo es obligatorio.
+                    </div>
+                    <div class="error" *ngIf="formulario.controls.email.errors?.pattern">
+                        Esta dirección no es válida.
+                    </div>
+                </div>
+            
+<!-- ag OTROS DATOS -->
+                <div class="row otrosDatos">  
+<!-- hi RUEDAS -->  
+                    <div class="col-3">
+                        <label  [ngClass]="{seleccionada: formulario.controls.ruedas.value}" for="ruedas">
+                            <!-- M1 5L11.5 5C11 8 10.5 8.5 10 8.5L2.5 8.5C2 8.5 1.5 8 1 5ZM5.5 9L7 9L10 12L9.5 12L7 9.5L5.5 9.5L3.0285 12.0125L2.5 12L2.5 12ZM1 13.5A.5.5 90 013.5 13.5A.5.5 90 011 13.5L1.25 13.5A.5.5 90 003.25 13.5A.5.5 90 001.25 13.5ZM9 13.5A.5.5 90 0111.5 13.5A.5.5 90 019 13.5L9.25 13.5A.5.5 90 0011.25 13.5A.5.5 90 009.25 13.5ZM5 4.5L1 4.5L1.5 2.5L5 4.5ZM5.3245 4.4705L1.6635 2.267L3.4885.9355L5.3245 4.4705ZM5.6345 4.516L3.787.7865L5.979.3385L5.646 4.5045ZM1.5 13.5A.5.5 90 003 13.5A.5.5 90 001.5 13.5ZM9.478 13.4925A.5.5 90 0011 13.5A.5.5 90 009.5 13.5ZM11.5 4.75L11.8 4.75L11.75 5L14.5 2.5L14.25 2.25L11.5 4.75 -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-dice-6-fill" viewBox="0 0 16 16">
+                                <path d="
+                                
+                                M4.5 9L9.5 9L12 13.5L14.005 12.11L13.449 11.362L12.337 12.148L10.055 8.0445L5.5 8L5.415 6.4915L9 6.5L9 5.5L5.3955 5.4945L5 2.5L4 2.5ZZM3 7C-1.35 11.87 6.6435 17.8785 10 11.5L10.353 12.365C6.915 18.2105-1.9025 13.1305 2.0205 7.0645L2.5 6.449ZM3.5 1A.5.5 90 005.5 2A.5.5 90 003.5 1Z
+                                
+                                "/>
+                            </svg>
+                        </label>
+                        <input type="checkbox" name="ruedas" id="ruedas" formControlName="ruedas"><br>
+                    </div>
+<!-- hi CARRITO -->
+                    <div class="col-3">
+                        <label [ngClass]="{seleccionada: formulario.controls.carrito.value}" for="carrito">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-dice-6-fill" viewBox="0 0 16 16">
+                                <path d="
+                                    M1 5L11.5 5C11 8 10.5 8.5 10 8.5L2.5 8.5C2 8.5 1.5 8 1 5ZM5.5 9L7 9L10 12L9.5 12L7 9.5L5.5 9.5L3.0285 12.0125L2.5 12L2.5 12ZM1 13.5A.5.5 90 013.5 13.5A.5.5 90 011 13.5L1.25 13.5A.5.5 90 003.25 13.5A.5.5 90 001.25 13.5ZM9 13.5A.5.5 90 0111.5 13.5A.5.5 90 019 13.5L9.25 13.5A.5.5 90 0011.25 13.5A.5.5 90 009.25 13.5ZM5 4.5L1 4.5L1.5 2.5L5 4.5ZM5.3245 4.4705L1.6635 2.267L3.4885.9355L5.3245 4.4705ZM5.6345 4.516L3.787.7865L5.979.3385L5.646 4.5045ZM1.5 13.5A.5.5 90 003 13.5A.5.5 90 001.5 13.5ZM9.478 13.4925A.5.5 90 0011 13.5A.5.5 90 009.5 13.5ZM11.5 4.75L11.8 4.75L11.75 5L14.5 2.5L14.25 2.25L11.5 4.75
+                                "/>
+                            </svg>
+
+                        </label>
+                        <input type="checkbox" name="carrito" id="carrito" formControlName="carrito"><br>
+                    </div>
+
+<!-- hi ALERGIAS -->
+                    <div class="col-6">
+                        <label for="alergias">Alergia/Intolerancia</label>
+                        <input type="checkbox" name="alergias" id="alergias" formControlName="alergias"><br>
+                         <div *ngIf="this.formulario.value.alergias">
+                            <input type="text" class="form-control" formControlName="alergia" id="inAlergia" placeholder="Indiquela">
+                        </div>
+                    </div>
+
+                </div>
+            </div>  
+             
+<!-- vo SUBMIT -->
+            <button type="submit" class="btn"[disabled]="formulario.invalid">Reservar</button>
+        </div>
+
+</form>
+<!-- ps FIN FORMULARIO -->
+
+
+<footer></footer>

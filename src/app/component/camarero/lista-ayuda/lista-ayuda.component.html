@@ -1,0 +1,14 @@
+<div class="contenedor">
+    <div *ngFor="let mesa of mesas_ayudables;" (click)="ayudada(mesa)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+    
+            <path 
+                d="
+                
+                M0 1L0 14C0 15 1 15 1 14L1 11L4 11L4 14C4 15 5 15 5 14L5 9L5 9A1 1 0 004 8L1 8L1 1C1 0 0 0 0 1ZM6 13C5 13 5 14 6 14L9 14L9 14C10 14 10 13 9 13L8 13L8 8C7.6 8.3 7.3 8.3 7 8L7 13L6 13ZM7 6C7.8 6.8 7.3 6.8 8 6L11 4L4 4ZM4 5L3 4L2 4A1 1 0 002 5ZM11 5L12 4L13 4A1 1 0 0113 5ZM16 1L16 14C16 15 15 15 15 14L15 11L12 11L12 14C12 15 11 15 11 14L11 9A1 1 0 0112 8L15 8L15 1C15 0 16 0 16 1Z
+                
+                "/>
+          </svg>    
+        <p>{{mesa}}</p>
+    </div>
+</div>

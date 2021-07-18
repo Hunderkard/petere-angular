@@ -1,0 +1,84 @@
+@import "src/styles.scss";
+
+.error{
+    color: var(--coolors4);
+    background-color: var(--coolors1);
+    font-size: var(--p2);
+    text-align: center;
+}
+.contenedor{
+  color: var(--coolors3);
+  padding: var(--p2);
+  background-color: var(--negro);
+  box-shadow: -1rem 0 3rem #000;
+  border-radius: 16px;
+
+  form{
+  @include movilPeq{
+    transform: scale(0.8);
+  }
+  .subir{
+    background-color: var(--coolors3);
+  }
+
+  .datos{
+    display: grid;
+    gap:var(--p2);
+    grid: 
+    "nom nom"
+    "pro pre"
+    "can uni"
+    ;
+  @include movil{
+    grid:"nom""pro""pre""can""uni";
+  }
+
+    .nombre{
+      grid-area:nom;
+    }
+    .proveedor{
+      grid-area:pro;
+    }
+    .precio{
+      grid-area:pre;
+    }
+    .cantidad{
+      grid-area:can;
+    }
+    .unidad{
+      grid-area:uni;
+    }
+  }
+  .imagen{
+    display: grid;
+    gap: var(--p2 );
+    grid:"in out";
+  @include movil{
+    grid:"in""out";
+  }
+  margin-top: var(--p2);
+
+  .in_imagen{
+    grid-area: in;
+  }
+  .out_imagen{
+    grid-area: out;
+    justify-self: center;
+  }
+  }
+  
+  }
+}
+textarea{
+  resize:none;
+}
+
+#elSubmit{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+#img{
+  border: solid;
+  border-color: var(--coolors3);
+}

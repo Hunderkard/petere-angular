@@ -1,0 +1,51 @@
+@import "src/styles.scss";
+
+.contenedor{
+    display: grid;
+    gap: var(--m1);
+    grid:
+    "mes"
+    "det";
+    .mesas{
+        grid-area: mes;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        .mesa{
+            text-align: center;
+            @include borde(var(--negro));
+            padding: var(--p2);
+        }
+    }
+    .detalles{
+        padding: var(--p2);
+        grid-area: det;
+        gap: var(--p1);
+        background-color: var(--negro);
+        color: var(--coolors3);
+        .platos{
+            grid-area: pla;
+            display: flex;
+            flex-direction: column;
+            .plato{
+                display: flex;
+                justify-content: space-around;
+            }    
+        }
+        .botones{
+            display: flex;
+            justify-content: space-between;
+            .precio{
+                grid-area: pre;
+                color: var(--coolors4);
+                font-size: var(--m2);
+            }
+            .limpiar{
+                grid-area: lim;
+                background-color: var(--coolors1);
+                color: var(--coolors4);
+            }
+        }
+    }
+}

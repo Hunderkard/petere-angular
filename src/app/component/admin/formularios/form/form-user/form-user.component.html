@@ -1,0 +1,57 @@
+<div class="contenedor">
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+    <div class="datos">
+<!-- ag NOMBRE -->
+        <div class="nombre">
+            <label for="inName">Nombre:</label>
+            <input class="form-control" type="text" id="inName" 
+                formControlName="nombre">
+<!-- fu ERRORES -->
+            <div class="error"
+            *ngIf=" formulario.controls.nombre.errors?.required &&
+                    formulario.controls.nombre.touched">
+                Este campo es oblitagorio.
+            </div>
+        </div>
+<!-- ag CONTRASEÑA -->
+        <div class="contra">
+            <label for="inPass">Contraseña:</label>
+            <input class="form-control" type="text" id="inPass" 
+                formControlName="password">
+<!-- fu ERRORES -->
+                <div class="error"
+                *ngIf=" formulario.controls.password.errors?.required &&
+                        formulario.controls.password.touched">
+                    Este campo es oblitagorio.
+                </div>
+        </div>
+<!-- ag NIVEL -->
+        <div class="nivel">
+            <label for="inLevel">Nivel de administrador</label>
+            <select class="form-control" id="inLevel" formControlName="level">
+                <option value="" selected disabled hidden>-Nivel-</option>
+                <option value="0">Administrador</option>
+                <option value="2" >Cliente</option>
+                <option value="3">Cocinero</option>
+                <option value="4">Camarero</option>
+            </select>
+        </div>
+    </div>
+
+<!-- ag EMAIL -->
+    <div class="email">
+        <label for="inEmail">Email:</label>
+        <input class="form-control" type="text" id="inEmail" 
+            formControlName="email">
+<!-- fu ERRORES -->
+        <div class="error"
+        *ngIf=" formulario.controls.email.errors?.required &&
+                formulario.controls.email.touched">
+            Este campo es oblitagorio.
+        </div>
+    </div>
+
+    <button type="submit" class="btn crear"[disabled]="formulario.invalid">Crear</button>
+    </form>
+</div>

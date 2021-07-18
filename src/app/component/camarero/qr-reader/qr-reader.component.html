@@ -1,0 +1,13 @@
+<div class="contenedor">
+
+    <div class="mesa">
+        <label for="inMesa">Mesa</label>
+        <input id="inMesa" type="number" [(ngModel)]="mesa"> {{mesa}}
+    </div>
+    
+</div>
+<div class="escaner">
+        <qr-scanner 
+        (capturedQr)="capturedQr($event)"
+        [allowUpload]="true"></qr-scanner>
+    </div>

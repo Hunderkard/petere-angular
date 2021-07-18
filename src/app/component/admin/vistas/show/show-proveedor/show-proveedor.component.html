@@ -1,0 +1,20 @@
+<div class="contenedor">
+<!-- ag DATOS #################### -->
+    <div class="datos">
+        <div class="nombre">
+            <h1>{{proveedor.nombre}}</h1>
+            <hr>
+        </div>
+        <div class="imagen">
+            <img [src]="imgUrl" id="logo" alt="Ruta no encontrada">
+        </div>
+    </div>
+
+<!-- ag BOTONES ################## -->
+    <div class="botones">
+        <button class="btn editar" routerLink="/admin/proveedor/{{id}}/edit">Editar</button>
+        <button class="btn borrar" (click)="onDelete()">Borrar</button>
+    </div>
+</div>
+
+<!-- <a href="https://www.google.es/maps/@36.5911034,-4.5351498,19z">localización</a> -->

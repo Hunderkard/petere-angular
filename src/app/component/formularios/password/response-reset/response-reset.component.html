@@ -1,0 +1,80 @@
+<!-- Fri-15/01 23:54:23 Vamos a terminar con esto ahora. -->
+
+ 
+<div class="flex-container">
+    <div class="cuadro">
+
+<!-- fu ERRORES HTTP -->
+<div class="error" *ngIf="error">
+{{error}}
+</div>
+<!-- ps EMPIEZA FORMULARIO -->
+        <form class="mb-3" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+<!-- ag EMAIL -->
+            <label for="inEmail" class="form-label">Email:</label>
+            <input  type="email" class="form-control"  placeholder="Correo electrónico" 
+                    id="inEmail" name="email"
+                    formControlName="email">
+<!-- fu ERRORES -->
+            <div class="error" 
+            *ngIf=" formulario.controls.email.errors?.required && 
+                    formulario.controls.email.touched">
+                Este campo es obligatorio.
+            </div>
+            <div class="error" *ngIf="formulario.controls.email.errors?.pattern">
+                Esta dirección no es válida.
+            </div>
+
+<!-- bi CONTRASEÑA -->
+<!-- bi Tendrá un mensaje para el error por requerido y por longitud mínima. -->
+            <label for="inContra" class="form-label">Contraseña</label>
+            <input  type="password" class="form-control"  placeholder="Contraseña" 
+                    id="inContra" name="password"
+                    formControlName="password">
+<!-- fu ERRORES -->
+            <div class="error" 
+            *ngIf=" formulario.controls.password.errors?.required &&
+                    formulario.controls.password.touched">
+                Este campo es obligatorio.
+            </div>
+            <div class="error" 
+            *ngIf="formulario.controls.password.errors?.minlength">
+                La longitud mínima es de {{formulario.controls.password.errors.minlength.requiredLength}}.
+            </div>
+            <br>
+
+<!-- dr REPETIR CONTRASEÑA -->
+<!-- dr Ambas contraseñas deberán ser iguales. -->
+            <label for="repeContra" class="form-label">Repetir contraseña</label>
+            <input type="password" class="form-control" placeholder="Contraseña"
+                    id="repeContra"
+                    formControlName="repetida">
+
+
+<!-- fu ERRORES -->
+            <div class="error" 
+            *ngIf=" formulario.controls.repetida.errors?.required &&
+                    formulario.controls.repetida.touched">
+                Este campo es obligatorio.
+            </div>
+            <div class="error" 
+            *ngIf=" formulario.controls.repetida.errors?.diferentes&&
+                    formulario.controls.repetida.touched">
+                No coinciden.
+            </div>
+            <br>
+
+<!-- ac BOTÓN SUBMIT -->
+            <button class="btn" type="submit" 
+            [disabled]="!this.formulario.valid"> Resetea </button>
+
+        </form>
+<!-- ps TERMINA FORMULARIO -->
+
+    </div>
+</div>
+
+
+
+<footer></footer>

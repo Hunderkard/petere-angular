@@ -1,0 +1,40 @@
+<div class="contenedor">
+<!-- ag DATOS ############################## -->
+  <div class="datos">
+
+      <h1>{{plato.nombre}}</h1>
+      Valor: {{plato.precio | currency:'EUR':true}}
+      <hr>
+      <span >Observaciones:</span>
+      <textarea rows="5" disabled readonly>{{plato.observaciones}}</textarea>
+
+    <div class="botones">
+      <button class="btn editar" routerLink="../{{plato.id}}/edit" >Editar</button>
+      <button class="btn borrar" (click)='onDelete()'>Borrar</button>
+    </div>
+  </div>
+
+<!-- ag FOTOS ############################## -->
+  <div class="foto">
+      <img [src]="urlImg" alt="Nada">
+  </div>
+
+<!-- ag INGREDIENTES ####################### -->
+  <div class="ingredientes">
+      <table class="table">
+          <thead>
+            <tr>
+              <th>Ingrediente</th>
+              <th>Cantidad</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let ingrediente of ingredientes">
+              <td>{{ingrediente[0]}}</td>
+              <td>{{ingrediente[1]}}</td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+</div>

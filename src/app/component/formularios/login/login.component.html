@@ -1,0 +1,73 @@
+<!-- Sun-20/12 05:07:44 El login, email y contraseña. -->
+
+
+
+<div class="flex-container">
+    <!-- <div class="mensaje">
+        <h1>Bienvenido al restaurante</h1>
+        <p>Al registrarse se puede preparar el pedido.</p>
+        <p>Si no tiene una cuenta puede crear una <a routerLink="/register">aquí</a>.</p>
+    </div> -->
+
+    <div class="cuadro">
+<!-- fu ERRORES HTTP -->
+    <div class="errorHTTP" *ngIf="error == 401">
+        El email o la contraseña no son correctos.
+    </div>
+    <div class="errorHTTP" *ngIf="error == 404">
+        Un archivo no ha sido encontrado.
+    </div>
+    <div class="errorHTTP" *ngIf="error == 500">
+        Se te olvidó encender el XAMPP...
+    </div>
+<!-- ps EMPIEZA FORMULARIO -->
+    <form class="mb-3" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+<!-- ag EMAIL #######################-->
+        <label for="inEmail" class="form-label">Email:</label>
+        <input  type="email" class="form-control"  placeholder="Correo electrónico" 
+                id="inEmail" name="email"
+                formControlName="email">
+
+<!-- fu ERRORES ######################-->
+        <div class="error" *ngIf="  formulario.controls.email.errors?.required &&
+                                    formulario.controls.email.touched">
+            Este campo es obligatorio.
+        </div>
+        <div class="error" *ngIf="formulario.controls.email.errors?.pattern">
+            Esta dirección no es válida.
+        </div>
+        
+<!-- bi CONTRASEÑA ####################-->
+        <label for="inContra" class="form-label">Contraseña</label>
+        <input  type="password" class="form-control"  placeholder="Contraseña" 
+                id="inContra" name="password"
+                formControlName="password">
+<!-- fu ERRORES -->
+        <div class="error" *ngIf="formulario.controls.password.errors?.required && formulario.controls.password.touched">
+            Este campo es obligatorio.
+        </div>
+        <div class="error" *ngIf="formulario.controls.password.errors?.minlength">
+            La longitud mínima es de {{formulario.controls.password.errors.minlength.requiredLength}}.
+        </div>
+        <br>
+
+<!-- ac BOTÓN SUBMIT -->
+        <button class="btn" type="submit" 
+                [disabled]="!this.formulario.valid"> 
+            Login 
+        </button>
+<br>
+        <small>
+            <a routerLink="/req-password-reset">Olvidé la contraseña</a>
+        </small>
+    </form>
+<!-- ps TERMINA FORMULARIO -->
+
+        <!-- Valido: {{formulario.status}} -->
+
+    </div>
+</div>
+
+
+<footer></footer>

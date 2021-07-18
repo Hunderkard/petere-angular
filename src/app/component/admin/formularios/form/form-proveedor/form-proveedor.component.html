@@ -1,0 +1,34 @@
+<div class="contenedor">
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+<!-- ag NOMBRE  -->
+        <div class="nombre">
+            <label for="inNombre">Proveedor:</label>
+            <input type="text" class="form-control" placeholder="Proveedor"
+            formControlName="nombre" id="inNombre">
+        <!-- fu ERRORES -->
+            <div class="error"
+            *ngIf=" formulario.controls.nombre.errors?.required &&
+                    formulario.controls.nombre.touched">
+                Este campo es necesario.
+            </div>
+        </div>
+        
+<!-- ag IMAGEN -->
+        <div class="imagen">
+<!-- bi IN IMAGEN -->
+            <div class="in_img">
+                <label for="inImagen" class="form-label">Foto ingrediente:</label>
+                <input class="form-control" 
+                    type="file" id="inImagen"
+                    name="imagen"
+                    (change)="onChange($event)"
+                > 
+            </div>
+<!-- bi OUT IMAGEN -->
+            <div class="out_img" *ngIf="imgUrl && imgUrl !== ''">
+                <img [src]="imgUrl" id="img" width="300" height="300" alt="Ninguna imagen seleccionada">
+            </div>
+        </div>
+    <button type="submit" class="btn crear" [disabled]="formulario.invalid">Crear</button>
+    </form>
+</div>

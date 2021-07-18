@@ -1,0 +1,79 @@
+@import "src/styles.scss";
+
+textarea{
+    resize: none;
+    width: 100%;
+    min-width: 200px;
+    color:var(--coolors3);
+&:focus{
+    color:var(--coolors4);
+}
+}
+input, select{
+    color:var(--coolors3);
+&:focus{
+    color:var(--coolors4);
+}
+}
+
+#inImagen{
+    display: none;
+}
+
+img{
+    max-width: 400px;
+    width:100%;
+    &.pristino{
+        border: solid;
+        border-color: var(--coolors3);
+    }
+    &.tocado{
+        border: solid;
+        border-color: var(--coolors4);
+    }
+}
+
+.contenedor{
+    color: var(--coolors3);
+    padding: var(--p2);
+    background-color: var(--negro);
+    box-shadow: -1rem 0 3rem #000;
+    border-radius: 16px;
+    form{
+@include movilPeq{
+    transform: scale(0.8);
+    padding:0;
+}
+        table{
+            color: var(--coolors3);
+        }
+    }
+}
+
+.borrar_el{
+    color: var(--coolors4);
+    background-color: var(--coolors1);
+}
+
+.actualizar, .agregar{
+    margin:var(--p1);
+    background-color: var(--coolors3);
+}
+
+.pristino{
+    border:solid;
+    border-color: var(--coolors3);
+    background-color: var(--coolors1);
+}
+
+.tocado{
+    border:solid;
+    border-color: var(--coolors4);
+    background-color: var(--coolors1);
+}
+
+.foto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

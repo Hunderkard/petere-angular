@@ -1,0 +1,12 @@
+<!-- Tue-05/01 10:34:00 Empiezo la cabecera responsive. -->
+<!-- hi https://getbootstrap.com/docs/5.0/components/navbar/#toggler  -->
+
+<cab-no-iden *ngIf="!logueado"></cab-no-iden>
+
+<cab-admin *ngIf="level == 0"></cab-admin>
+
+<cab-cliente *ngIf="level == 2"></cab-cliente>
+
+<cab-cocina *ngIf="level == 3"></cab-cocina>
+
+<cab-camarero *ngIf="level == 4"></cab-camarero>

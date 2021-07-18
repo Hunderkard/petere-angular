@@ -1,0 +1,56 @@
+@import "src/styles.scss";ñ
+.error{
+  color: var(--coolors3);
+  background-color: var(--coolors1);
+  font-size: 0.8em;
+  text-align: center;
+}
+
+textarea{
+  resize:none;
+}
+
+.contenedor{
+    background-color: var(--negro);
+    box-shadow: -1rem 0 3rem #000;
+    border-radius: 16px;
+  padding: var(--p2);
+  color: var(--coolors3);
+    form{
+     @include movilPeq{
+       transform: scale(0.8);
+     }
+
+       .imagen{
+         
+         display: grid;
+         gap:var(--p2);
+         margin-top:var(--p2);
+         margin-bottom:var(--p2);
+         grid:
+         "in out";
+        @include movil{
+          grid:
+          "in"
+          "out";
+        }
+
+         .in_img{
+           grid-area: in;
+         }
+         .out_img{
+           
+           margin-top: var(--p2);
+           grid-area: out;
+           justify-self: center;
+           border:solid;
+           border-color: var(--coolors3);
+         }
+       }
+
+       .crear{
+         background-color: var(--coolors3);
+       }
+     } 
+    
+}

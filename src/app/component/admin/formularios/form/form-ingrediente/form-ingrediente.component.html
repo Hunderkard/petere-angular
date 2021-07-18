@@ -1,0 +1,123 @@
+<!-- Sun-27/12 03:12:23  -->
+<div class="contenedor">
+
+<!-- ps EMPIEZA FORMULARIO -->
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+       
+<!-- ag BOTÓN ########################## SUBMIT -->
+        <div id="elSubmit">
+            <button type="submit" class="btn end subir" [disabled]="formulario.invalid">
+                Subir
+            </button>
+        </div>
+        
+        <div class="datos">
+<!-- ag NOMBRE ########################## -->
+            <div class="nombre">
+                <label for="inNombre">Ingrediente:</label>
+                <input type="text" class="form-control" placeholder="Nombre"
+                formControlName="nombre" id="inNombre">
+        <!-- fu ERRORES -->
+                <div class="error"
+                *ngIf=" formulario.controls.nombre.errors?.required &&
+                        formulario.controls.nombre.touched"
+                >
+                    Este campo es oblitagorio.
+                </div>
+            </div>
+
+<!-- ag PROVEEDOR ########################## -->
+            <div class="proveedor">
+                <label for="inProveedor">Proveedor:</label>
+                <select class="form-select" 
+                formControlName="proveedor" id="inProveedor">
+                    <option value="" selected disabled hidden>Seleccione un proveedor.</option>
+                    <option *ngFor="let proveedor of proveedores" value="{{proveedor.id}}">{{proveedor.nombre}}</option>
+                </select>
+        <!-- fu ERRORES -->
+                <div class="error"
+                *ngIf=" formulario.controls.proveedor.errors?.required &&
+                        formulario.controls.proveedor.touched">
+                        Este campo es obligatorio
+                </div>
+            </div>
+
+<!-- ag PRECIO ########################## -->    
+            <div class="precio">
+                <label for="inPrecio">Precio:</label>
+                <input type="number" class="form-control" min="0" step="0.01"
+                formControlName="precio" id="inPrecio">
+            <!-- fu ERRORES -->
+                <div class="error"
+                *ngIf=" formulario.controls.precio.errors?.required &&
+                        formulario.controls.precio.touched">
+                        Este campo es obligatorio.
+                </div>
+            </div>
+
+<!-- ag CANTIDAD ########################## -->
+            <div class="cantidad">
+                <label for="inCantidad">Unidades comprada:</label>
+                <input type="number" class="form-control" min="0"
+                id="inCantidad"
+                formControlName="cantidad">
+
+        <!-- fu ERRORES -->
+                <div class="error"
+                *ngIf=" formulario.controls.cantidad.errors?.required &&
+                        formulario.controls.cantidad.touched">
+                    Este campo es obligatorio
+                </div>
+            </div>
+
+
+<!-- ag UNIDAD ########################## -->
+            <div class="unidad">
+                <label for="inUnidad">Unidades:</label>
+                <input type="text" class="form-control"
+                id="inUnidad"
+                formControlName="unidad">
+        <!-- fu ERRORES -->
+                <div class="error"
+                    *ngIf=" formulario.controls.unidad.errors?.required &&
+                        formulario.controls.unidad.touched">
+                    Este campo es obligatorio
+                </div>
+            </div>
+            
+        </div>
+
+<!-- ag OBSERVACINES ########################## -->
+        <div class="observaciones">
+            <label for="inObservaciones">Observaciones</label>
+            <textarea 
+                cols="30" rows="5" placeholder="Observaciones..."
+                class="form-control"
+                formControlName="observaciones">
+            </textarea>
+        </div>
+
+<!-- ag IMAGEN ########################## -->
+        <div class="imagen">
+        <!-- bi IN IMAGEN -->
+            <div class="in_imagen">
+                <br>
+                <label for="inImagen" class="form-label">Foto ingrediente:</label>
+
+                <input class="form-control" 
+                    type="file" id="inImagen"
+                    name="imagen"
+                    formControlName="foto"
+                    (change)="onChange($event)">
+            </div>
+        <!-- bi OUT IMAGEN -->
+            <div class="out_imagen" *ngIf="imgUrl && imgUrl !== ''">
+                <img [src]="imgUrl" id="img" width="300" height="300" alt="Ninguna imagen seleccionada">
+            </div>
+        </div>
+        <br>
+
+    </form>
+<!-- ps TERMINA FORMULARIO -->
+    
+</div>

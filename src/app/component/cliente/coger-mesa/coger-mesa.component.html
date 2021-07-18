@@ -1,0 +1,19 @@
+
+<div *ngIf="mesado<1">
+    <div class="contenedor">
+
+        <qr-scanner 
+        (capturedQr)="capturedQr($event)"
+        [allowUpload]="true"></qr-scanner>    
+        <!-- <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+            <label for="mesa">Mesa:</label>
+            <input class="form-control" type="text" id="mesa" formControlName="numero">
+
+            <label for="clave">Clave:</label>
+            <input class="form-control" type="text" id="clave" formControlName="codigo">
+
+            <button type="submit" class="btn btn-primary"[disabled]="formulario.invalid">Registrar</button>
+        </form>         -->
+    </div>
+
+</div>

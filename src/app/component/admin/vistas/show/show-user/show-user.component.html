@@ -1,0 +1,56 @@
+<div class="contenedor">
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+<button class="btn actualizar" [disabled]="formulario.invalid" type="submit">Actualizar</button>
+
+<table class="table" *ngIf="usuarios != null">
+<!-- ag TITULOS ################################################## -->
+    <tbody>
+<!-- ag FILAs ##########################################################-->
+        <div class="fila" *ngFor="let usuario of usuarios">
+<!-- bi ID ##################################################### -->
+            <div class="id">
+                <th>{{usuario.id}}</th>
+            </div>
+<!-- bi NAME ##################################################### -->
+            <div class="nombre">
+                <td *ngIf="id != usuario.id;else inName" (click)="navegar(usuario.id)">{{usuario.name}}</td>
+                <ng-template #inName>
+                    <td>
+                        <input class="in form-control" type="text" formControlName="nombre">
+                    </td>
+                </ng-template>
+            </div>
+<!-- bi EMAIL ##################################################### -->
+            <div class="email">
+                <td *ngIf="id != usuario.id;else inEmail" (click)="navegar(usuario.id)"> {{usuario.email}}</td>
+                <ng-template #inEmail>
+                    <td>
+                        <input class="in form-control" type="text" formControlName="email">
+                    </td>
+                </ng-template>
+            </div>
+<!-- bi LEVEL ##################################################### -->
+            <div class="level">
+                <td *ngIf="id != usuario.id;else inLevel" (click)="navegar(usuario.id)"> {{usuario.level}}</td>
+                <ng-template #inLevel>
+                    <td>
+                        <input class="in form-control" type="number" min="0" max="4" formControlName="level">
+                    </td>
+                </ng-template>
+            </div>
+<!-- bi MESA ##################################################### -->
+            <div class="mesa">
+                <td *ngIf="id != usuario.id; else inMesa" (click)="navegar(usuario.id)"> {{usuario.mesa}}</td>
+                <ng-template #inMesa>
+                    <td>
+                        <input class="in form-control" type="number" formControlName="mesa">
+                    </td>
+                </ng-template>
+            </div>
+        </div>
+    </tbody>
+
+</table>
+</form>
+</div>

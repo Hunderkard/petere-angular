@@ -1,0 +1,51 @@
+@import "src/styles.scss";
+
+.contenedor{
+    color:var(--coolors3);
+    background-color: var(--negro);
+    box-shadow: -1rem 0 3rem #000;
+    border-radius: 16px;
+    display: grid;
+    padding: var(--p2);
+
+    .datos{
+        display: grid;
+        grid: "nom img";
+        gap:var(--p2);
+    @include movil{
+        grid:
+        "nom"
+        "img";
+    }
+        .nombre{
+            grid-area: nom;
+        }
+
+        .imagen{
+            grid-area: img;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img{
+                max-height: 150px;
+                height: auto;
+                max-width: 100%;
+            }
+        }
+    }
+
+    .botones{
+        display: flex;
+        justify-content: space-between;
+        button{
+            margin: var(--m1);
+        }
+        .editar{
+            background-color: var(--coolors3);
+        }
+        .borrar{
+            color:var(--coolors4);
+            background-color: var(--coolors1);
+        }
+    }
+}

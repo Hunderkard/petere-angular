@@ -1,0 +1,81 @@
+<div class="contenedor">
+    <table *ngIf="registros">
+        
+        <tr class="titulos">
+
+            <td class="dia">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-calendar-date" viewBox="0 0 16 16">
+                    <path d="M6.445 11.688V6.354h-.633A12.6 12.6 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61h.675zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82h-.684zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23z"/>
+                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                </svg>
+            </td>
+            
+            <td class="mesa"> 
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                    <path d="M0 1L0 14C0 15 1 15 1 14L1 11L4 11L4 14C4 15 5 15 5 14L5 9L5 9A1 1 0 004 8L1 8L1 1C1 0 0 0 0 1ZM6 13C5 13 5 14 6 14L9 14L9 14C10 14 10 13 9 13L8 13L8 8C7.6 8.3 7.3 8.3 7 8L7 13L6 13ZM7 6C7.8 6.8 7.3 6.8 8 6L11 4L4 4ZM4 5L3 4L2 4A1 1 0 002 5ZM11 5L12 4L13 4A1 1 0 0113 5ZM16 1L16 14C16 15 15 15 15 14L15 11L12 11L12 14C12 15 11 15 11 14L11 9A1 1 0 0112 8L15 8L15 1C15 0 16 0 16 1Z"/>
+                </svg> 
+            </td>
+
+            <td class="hora"> 
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                    <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                </svg> 
+            </td>
+
+            <td class="cobro">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                    <path d="M11.75 2.5 11.25 4.25C4.5 3.25 3.75 11 11.75 10.75L12.25 12.5C.5 14 1.25.5 11.75 2.5M1.75 5.75 9.75 5.75 9.75 7 1.75 7ZM1.75 7.75 9.75 7.75 9.75 9 1.75 9Z"/>
+                </svg>
+            </td>
+
+        </tr>
+        <hr>
+        <tr class="fila" *ngFor="let registro of registros">
+            <td class="dia"> {{registro.dia}} </td>
+            <td class="mesa"> {{registro.mesa_id}} </td>
+            <td class="hora"> {{registro.hora}} </td>
+            <td class="cobro"> {{registro.cobro | currency:'EUR':true}} </td>
+        </tr>
+    </table>
+</div>
+
+
+
+
+<!--    <div class="titulos">
+
+        <div class="dia">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-calendar-date" viewBox="0 0 16 16">
+                <path d="M6.445 11.688V6.354h-.633A12.6 12.6 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61h.675zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82h-.684zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23z"/>
+                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+            </svg>
+        </div>
+        
+        <div class="mesa"> 
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                <path d="M0 1L0 14C0 15 1 15 1 14L1 11L4 11L4 14C4 15 5 15 5 14L5 9L5 9A1 1 0 004 8L1 8L1 1C1 0 0 0 0 1ZM6 13C5 13 5 14 6 14L9 14L9 14C10 14 10 13 9 13L8 13L8 8C7.6 8.3 7.3 8.3 7 8L7 13L6 13ZM7 6C7.8 6.8 7.3 6.8 8 6L11 4L4 4ZM4 5L3 4L2 4A1 1 0 002 5ZM11 5L12 4L13 4A1 1 0 0113 5ZM16 1L16 14C16 15 15 15 15 14L15 11L12 11L12 14C12 15 11 15 11 14L11 9A1 1 0 0112 8L15 8L15 1C15 0 16 0 16 1Z"/>
+            </svg> 
+        </div>
+
+        <div class="hora"> 
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+            </svg> 
+        </div>
+
+        <div class="cobro">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                <path d="M11.75 2.5 11.25 4.25C4.5 3.25 3.75 11 11.75 10.75L12.25 12.5C.5 14 1.25.5 11.75 2.5M1.75 5.75 9.75 5.75 9.75 7 1.75 7ZM1.75 7.75 9.75 7.75 9.75 9 1.75 9Z"/>
+            </svg>
+        </div>
+
+    </div>
+    <hr>
+    <div class="fila" *ngFor="let registro of registros">
+        <div class="dia"> {{registro.dia}} </div>
+        <div class="mesa"> {{registro.mesa_id}} </div>
+        <div class="hora"> {{registro.hora}} </div>
+        <div class="cobro"> {{registro.cobro}} </div>
+    </div> -->

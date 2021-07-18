@@ -1,0 +1,265 @@
+@import "src/styles.scss";
+
+hr{
+    border: dashed;
+    border-color: var(--coolors4); 
+    height: 0;
+}
+
+.contenedor{
+    height: 100vh;
+    display: grid;
+    align-content: flex-start;
+    grid:
+    "filtros"
+    "platos";
+
+    .botones{
+        grid-area: filtros;
+        display: grid;
+        grid: "botones" "auxiliares";
+        align-items: center;
+        justify-content: center;
+        .filtros{
+            // display: none;
+            grid-area: botones;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .ultimoHijo{
+            grid-area: auxiliares;
+            justify-self: center;
+            button{
+                margin: var(--p1);
+                background-color: var(--coolors4);
+            }
+
+            .camarero{
+                border-radius: 50%;
+                color:var(--coolors4);
+                @include borde(var(--negro));
+                background-color: var(--negro);
+                
+                box-shadow: 0 5px var(--coolors2);
+                transition: 0.1s;
+
+                &:active{
+                    transform: translateY(2px);
+                    box-shadow: 0 3px var(--coolors4);
+                    
+                }
+            } 
+
+        }
+    }
+
+    .platos{
+        display: grid;
+        justify-content: center;
+        grid-template-columns: minmax(50%, 70%); 
+        gap: 1rem;
+
+    @include tablet{
+        grid-template-columns: 100%;
+    }
+    
+    @include pantallaGrande{
+        grid-template-columns: repeat(2, minmax(40%, 1fr));
+    }
+   
+
+        .plato{
+            display: grid;
+            border-radius: 16px;
+            gap: var(--p1);
+            grid:"img info";
+            grid-template-columns: auto 50%;
+        @include movil{
+            grid:
+            "info"
+            "img";
+        }
+            background-color: var(--negro);
+            color:var(--coolors3);
+
+            @include borde(var(--coolors2), 3px);
+            
+            overflow: hidden;
+            img{
+                max-width: 100%;
+                grid-area: img;
+                align-self: center;
+                justify-self: start;
+                @include movil{
+                justify-self: center;
+                }
+                height: 50%;
+                margin:2px;
+                cursor: pointer;
+                filter: sepia(50%);
+            &:hover{
+                transition: 0.5s;
+                transform: scale(2) translateX(25%);
+            @include movil{
+                transform: scale(2) translateY(-12.5%);
+            }
+                filter: grayscale(0);
+                z-index: 1;
+            }
+            }
+            .infoPlato{
+                grid-area: info;
+                position: relative;
+                justify-self: stretch;
+                h3{
+                    display: flex;
+                    justify-content: space-between;
+                    color:var(--coolors3);
+                    &.apagado{
+                        color:var(--coolors2);
+                    }
+                    button{
+                        background-color:var(--coolors3);
+                        margin:5px;
+                    }
+                }
+
+                .ingredientes{
+                    color:var(--coolors3);
+
+                    .tachado{
+                        text-decoration: line-through;
+                        color:var(--coolors4);
+
+                        .ingrediente{
+                            color:var(--coolors2);
+                        }
+                    }
+                }
+
+                .precio{
+                    color: var(--coolors4);
+                    position: absolute;
+                    bottom: 5px;
+                    right: 5px;
+                }
+            }
+        }
+    }
+}
+
+
+
+.pedido{
+    @include movilPeq{
+        // transform: scale(0.8);
+    }
+    //ps Fondo y Borde
+    @include borde(var(--coolors1), var(--p1));
+    background-color: var(--coolors5);
+
+    //ps Posición
+    z-index: 2;
+    position: fixed;
+    top: var(--p1);
+    margin-left: 15vw;
+
+@include movil{
+    margin-left: 0vw;
+    top: calc(var(--p1) + 5rem);
+}
+
+    //ps Tamaño
+    width: 60vw;
+    height: 80vh;
+@include movil{
+    width: 80vw;
+}
+@include movilPeq{
+    width: 100vw;
+}
+
+    overflow: auto;
+
+
+    h3{
+        color:var(--negro);
+        text-align: center;
+    }
+    table{
+        color:var(--negro);
+        width: 100%;
+        tr{
+          td{
+
+            text-align: center;
+          }
+        }
+    }
+    
+    .qr{
+        @include movilPeq{
+            transform: scale(0.8);
+        }
+        display: flex;
+        justify-content: center;
+    }
+
+    .cerrar{
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+        margin: 0;
+        color:var(--coolors4);
+        background-color: var(--coolors1);
+        position:absolute;
+        top: 5px;
+        right: 5px;
+        font-size: var(--m2);
+    }
+
+    .guardar{
+        margin:var(--p1);
+        background-color: var(--coolors3);
+    }
+
+    .mandar{
+        margin:var(--p1);
+        background-color: var(--negro);
+        color:var(--coolors4);
+    }
+
+    //ps La barra de desplazamiento.
+    &::-webkit-scrollbar{ //fu webkit es para chrome, no hay para mozilla.
+        width: 0.5rem;
+    }
+    &::-webkit-scrollbar-track{ //fu El carril por el que se mueve la barra.
+        background-color: var(--coolors4);
+    }
+    &::-webkit-scrollbar-thumb{  //fu La barra en sí.
+        background-color: var(--coolors3);
+    }
+}
+
+.listo{
+    color:blue;;
+}
+
+.verde{
+    background-color: var(--coolors3);
+    @include borde(var(--coolors1), 5px);
+    box-shadow: -0.2rem 0 1rem #000;
+}
+
+input{
+    display:none;
+    &.mesa_cam{
+    display: inline-block;
+    background-color: var(--coolors1);
+    color: var(--coolors4);
+    text-align: center;
+    border-radius: 16px;
+    }
+}
+label{
+    margin: var(--p1);
+}
